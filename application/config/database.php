@@ -74,6 +74,7 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
+
 	'dsn'	=> '',
 	'hostname' => 'free10.beget.com',
 	'username' => 'q68486yp_socserv',
