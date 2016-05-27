@@ -19,15 +19,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div id="map" style="width: 70%; height: 700px; float:left;"></div>
 <script type="text/javascript">
+
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 46.4846, lng: 30.7326},
             zoom: 12
         });
         var input = (document.getElementById('search_address'));
-
         var autocomplete = new google.maps.places.Autocomplete(input);
-        //autocomplete.bindTo('bounds', map);
+        autocomplete.bindTo('bounds', map);
 
         google.maps.event.addListener(autocomplete, 'place_changed', function() {
             var place = autocomplete.getPlace();
@@ -44,6 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
         });
     }
+
     $('#search_btn').click(function(){
         map.setCenter(lastPlace);
         map.setZoom(18);
