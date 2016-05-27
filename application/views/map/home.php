@@ -50,13 +50,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         });
 
         for (var i=0; i<markers_data.length; i++){
-            var marker = new google.maps.Marker({
-                position: markers_data[i].coordinates,
-                map: map
-            });
+            add_marker(markers_data[i]);
         }
     }
-
+    function add_marker(data){
+        var marker = new google.maps.Marker({
+            position: data.coordinates,
+            map: map
+        });
+        var infowindow = new google.maps.InfoWindow({
+            content: data.adres
+        });
+        marker.addListener('mouseover',function(){
+            infowindow.open(map,marker);
+        })
+        marker.addListener('mouseout',function(){
+            infowindow.close(map,marker);
+        })
+    }
     $('#search_btn').click(function(){
         map.setCenter(lastPlace);
         map.setZoom(18);
