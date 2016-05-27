@@ -22,6 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //        }
     ?>
 </div>
+<div id="marker_desc" style="width: 300px; height: 200px; margin-top: -300px; margin-bottom: 20px; background:#fff;"></div>
 <div id="map" style="width: 70%; height: 700px; float:left;"></div>
 <script type="text/javascript">
     var markers_data = JSON.parse('<?=json_encode($services);?>');
@@ -30,8 +31,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             center: {lat: 46.4846, lng: 30.7326},
             zoom: 12
         });
+        map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(document.getElementById('marker_desc'));
         var input = (document.getElementById('search_address'));
         var autocomplete = new google.maps.places.Autocomplete(input);
+
 
         google.maps.event.addListener(autocomplete, 'place_changed', function() {
             var place = autocomplete.getPlace();
