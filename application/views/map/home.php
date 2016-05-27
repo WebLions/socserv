@@ -16,6 +16,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 <div style="width: 30%; height: 700px; float:left;">
     <input type="text" id="search_address" placeholder="Search address.."><button id="search_btn">Search</button>
+    <?php
+        foreach ($this->data['filters'] as $value){
+            print_r($value);
+        }
+    ?>
 </div>
 <div id="map" style="width: 70%; height: 700px; float:left;"></div>
 <script type="text/javascript">
