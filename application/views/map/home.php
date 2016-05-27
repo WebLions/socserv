@@ -22,7 +22,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 46.4846, lng: 30.7326},
-            scrollwheel: false,
             zoom: 12
         });
         var input = (document.getElementById('search_address'));
@@ -47,6 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     $('#search_btn').click(function(){
         map.setCenter(lastPlace);
+        map.setZoom(18);
     });
 </script>
 <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA4wG__6Tde9l83sGXz4DdT-KwjrKTF-lQ&callback=initMap&libraries=places'>
