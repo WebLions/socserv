@@ -17,29 +17,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div style="width: 30%; height: 700px; float:left;">
     <input type="text" id="search_address" placeholder="Search address.."><button id="search_btn">Search</button>
     <?php
-        foreach ($this->data['filters'] as $value){
-            print_r($value);
-        }
+//        foreach ($this->data['filters'] as $value){
+//            print_r($value);
+//        }
     ?>
 </div>
 <div id="map" style="width: 70%; height: 700px; float:left;"></div>
 <script type="text/javascript">
+    var markers_data = JSON.parse('<?=json_encode($services);?>');
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 46.4846, lng: 30.7326},
             zoom: 12
         });
         var input = (document.getElementById('search_address'));
-
         var autocomplete = new google.maps.places.Autocomplete(input);
-        //autocomplete.bindTo('bounds', map);
 
         google.maps.event.addListener(autocomplete, 'place_changed', function() {
             var place = autocomplete.getPlace();
+
             if (!place.geometry) {
                 return;
             }
-
+            console.log(JSON.stringify(place.geometry.location));
             if (place.geometry.viewport) {
                 map.fitBounds(place.geometry.viewport);
             } else {
@@ -48,7 +48,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 map.setZoom(18);
             }
         });
+
+        for (var i=0; i<markers_data.length; i++){
+            var marker = new google.maps.Marker({
+                position: markers_data[i].coordinates,
+                map: map
+            });
+        }
     }
+
     $('#search_btn').click(function(){
         map.setCenter(lastPlace);
         map.setZoom(18);
