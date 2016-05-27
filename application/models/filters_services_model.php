@@ -1,51 +1,47 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Filters_model extends CI_Model {
-    
+class Filters_services_model extends CI_Model {
+
     public function __construct() {
         parent::__construct();
     }
 
     /**
-     * Отдает массив фильтров
+     * Возвращает массив связей фильтер - сервис
      *
      * @param array $params параметры
-     * <br /> array $params['category_ids'] массив id категорий
-     * <br /> array $params['ids'] массив id фильтра
+     * array $params['filter_ids'] id фильтров
+     * array $params['services_ids'] id сервисов
      *
      * @return array
      */
-    public function getFilters($params = array()) {
-        $return = array();
-        if (!empty($params['category_ids'])) {
-            $where = (array)$params['category_ids'];
-            $this->db->where_in('id_category', $where);
+    public function getFiltersServices($params = array()) {
+        if (!empty($params['filter_ids'])) {
+            $id = (array) $params['filter_ids'];
+            $this->db->or_where_in('id_filter', $id);
         }
-        if (!empty($params['ids'])) {
-            $where = (array)$params['ids'];
-            $this->db->where_in('id', $where);
+        if (!empty($params['services_ids'])) {
+            $id = (array) $params['services_ids'];
+            $this->db->or_where_in('id_services', $id);
         }
-        $result = $this->db->get('filters');
-        if (!empty($result)) {
-            $return = $result->result_array();
-        }
-        return $return;
+        $result = $this->db->get('filters_services');
+        return $result;
     }
 
     /**
-     * Добавляет новый фильтр
+     * Добавляет новую связь
      *
      * @param array $data массив с данными
      *
      * @return inreget
      */
-    public function insertFilters($data = array()) {
+    public function insertFiltersServices($data = array()) {
         $return = array();
         if (empty($data)) {
             return FALSE;
         }
-        $q = $this->db->insert('filters', $data);
+        $q = $this->db->insert('filters_services', $data);
         if ($q) {
             $return = $this->db->insert_id();
         }
@@ -53,7 +49,7 @@ class Filters_model extends CI_Model {
     }
 
     /**
-     * Обновляем данные фильтров
+     * Обновляем данные связи
      *
      * @param array $params параметры
      * integer $params['id'] id записи
@@ -61,7 +57,7 @@ class Filters_model extends CI_Model {
      *
      * @return boolean
      */
-    public function updateFilters($params = array()) {
+    public function updateFiltersServices($params = array()) {
         if (empty($params['id'])) {
             return FALSE;
         }
@@ -71,24 +67,24 @@ class Filters_model extends CI_Model {
             return FALSE;
         }
         $this->db->where('id', $id);
-        $result = $this->db->update('filters', $params['data']);
+        $result = $this->db->update('filters_services', $params['data']);
         return $result;
     }
 
     /**
-     * Удаляет данные фильтров
+     * Удаляет связку
      *
      * @param integer $params['id'] id записи
      *
      * @return array
      */
-    public function deleteFilters($params = array()) {
+    public function deleteFiltersServices($params = array()) {
         if (empty($params['id'])) {
             return FALSE;
         }
         $id = (int) $params['id'];
         $this->db->where('id', $id);
-        $result = $this->db->delete('filters');
+        $result = $this->db->delete('filters_services');
         return $result;
     }
 
