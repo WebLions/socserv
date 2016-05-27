@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             } else {
                 lastPlace = place.geometry.location;
                 map.setCenter(place.geometry.location);
-                map.setZoom(12);
+                map.setZoom(18);
             }
         });
     }
