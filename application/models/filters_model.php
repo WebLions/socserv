@@ -91,7 +91,7 @@ class Filters_model extends CI_Model {
         }
         $id = (int) $params['id'];
         $this->db->where('id', $id);
-        $result = $this->db->delete('filters', $params['data']);
+        $result = $this->db->delete('filters');
         return $result;
     }
 
