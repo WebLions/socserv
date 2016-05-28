@@ -95,4 +95,21 @@ class Filters_model extends CI_Model {
         return $result;
     }
 
+    /**
+     * Возвращает массив id фильтров принадледащей заданной службы
+     *
+     * @param integer $params['id'] id сервиса
+     *
+     * @return array
+     */
+    public function getFiltersIdByServices($params = array()) {
+        if (empty($params['id'])) {
+            return FALSE;
+        }
+        $id = (int) $params['id'];
+        $this->db->where('id', $id);
+        $result = $this->db->delete('filters');
+        return $result;
+    }
+
 }
