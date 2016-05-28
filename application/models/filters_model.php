@@ -3,8 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Filters_model extends CI_Model {
     
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
@@ -17,8 +16,7 @@ class Filters_model extends CI_Model {
      *
      * @return array
      */
-    public function getFilters($params = array())
-    {
+    public function getFilters($params = array()) {
         $return = array();
         if (!empty($params['category_ids'])) {
             $where = (array)$params['category_ids'];
@@ -42,8 +40,7 @@ class Filters_model extends CI_Model {
      *
      * @return inreget
      */
-    public function insertFilters($data = array())
-    {
+    public function insertFilters($data = array()) {
         $return = array();
         if (empty($data)) {
             return FALSE;
@@ -85,8 +82,7 @@ class Filters_model extends CI_Model {
      *
      * @return array
      */
-    public function deleteFilters($params = array())
-    {
+    public function deleteFilters($params = array()) {
         if (empty($params['id'])) {
             return FALSE;
         }

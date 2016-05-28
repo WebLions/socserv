@@ -3,8 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Filters_services_model extends CI_Model {
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
@@ -37,8 +36,7 @@ class Filters_services_model extends CI_Model {
      *
      * @return inreget
      */
-    public function insertFiltersServices($data = array())
-    {
+    public function insertFiltersServices($data = array()) {
         $return = array();
         if (empty($data)) {
             return FALSE;
