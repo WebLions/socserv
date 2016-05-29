@@ -19,7 +19,7 @@ class Main extends CI_Controller {
 
 		foreach ($this->data['categories'] as $key=>$value) {
 			$params['category_ids'] = $value['id'];
-			$this->data['categories'][$key][] = $this->filters_model->getFilters($params);
+			$this->data['categories'][$key]['values'] = $this->filters_model->getFilters($params);
 		}
 
 		$this->load->view('map/home', $this->data);
