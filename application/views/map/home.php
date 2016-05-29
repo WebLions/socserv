@@ -17,14 +17,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div style="width: 30%; height: 700px; float:left;">
     <input type="text" id="search_address" placeholder="Search address.."><button id="search_btn">Search</button>
     <?php
-//        foreach ($this->data['filters'] as $value){
-//            print_r($value);
-//        }
-print_r($services);
     foreach($categories as $cat):?>
         <h3><?=$cat['name'];?></h3>
         <p><?php foreach($cat['values'] as $val): ?>
-            <input type="checkbox" id="filter<?=$cat['id'];?>_val<?=$val['id'];?>" val_id="<?=$val['id'];?>" filter_id="<?=$cat['id'];?>" class="filter_box"/><label for="filter<?=$cat['id'];?>_val<?=$val['id'];?>"><?=$val['name'];?></label><br>
+            <input type="checkbox" id="filter<?=$val['id'];?>" filter_id="<?=$val['id'];?>" class="filter_box"/><label for="filter<?=$cat['id'];?>_val<?=$val['id'];?>"><?=$val['name'];?></label><br>
          <?php endforeach;?></p>
  <?php endforeach; ?>
 </div>
