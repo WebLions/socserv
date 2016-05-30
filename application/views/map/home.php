@@ -4,31 +4,61 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Социальная служба</title>
+
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-    <style type="text/css">
-        html, body, div{
-            margin: 0px;
-            padding: 0px;
-        }
-    </style>
+    <script type="text/javascript" src="/front-end/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/front-end/js/custom.js"></script>
+    <link rel="stylesheet" href="/front-end/css/main.css">
+    <link rel="stylesheet" href="/front-end/css/bootstrap.css">
+    <link rel="stylesheet" href="/front-end/css/bootstrap-theme.css">
+
+
 </head>
 <body>
-<div style="width: 30%; height: 700px; float:left;">
-    <input type="text" id="search_address" placeholder="Search address.."><button id="search_btn">Search</button>
-    <?php
-    foreach($categories as $cat):?>
-        <h3><?=$cat['name'];?></h3>
-        <p><?php foreach($cat['values'] as $val): ?>
-            <input type="checkbox" id="filter<?=$val['id'];?>" filter_id="<?=$val['id'];?>" class="filter_box"/><label for="filter<?=$cat['id'];?>_val<?=$val['id'];?>"><?=$val['name'];?></label><br>
-         <?php endforeach;?></p>
- <?php endforeach; ?>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-lg-3 side-bar">
+            <div class=" search-block">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="search_address" placeholder="Что ищем?">
+          <span class="input-group-btn">
+            <button class="btn btn-default"  id="search_btn" type="button">Поиск</button>
+          </span>
+                </div>
+            </div>
+            <?php
+            foreach($categories as $cat):?>
+                <div class="filter-category-item ">
+                    <div class="filter-category">
+                        <a><?=$cat['name'];?></a>
+                        <i class="glyphicon glyphicon-chevron-down "></i>
+                    </div>
+                    <div class="filter-content">
+                        <?php foreach($cat['values'] as $val): ?>
+                            <div class="btn-group" data-toggle="buttons">
+                                <div class="btn btn-success">
+                                    <input type="checkbox" id="filter<?=$val['id'];?>" filter_id="<?=$val['id'];?>" class="filter_box"/>
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                <label for="filter<?=$cat['id'];?>_val<?=$val['id'];?>"><?=$val['name'];?></label>
+                            </div>
+                            <br>
+                        <?php endforeach;?>
+
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="col-lg-9">
+            <div id="map" class="map"></div>
+        </div>
+    </div>
+
+
 </div>
-<div id="marker_desc" style="display:none; width: 300px; margin-left:-150px; height: 200px; margin-top: -300px; margin-bottom: 20px; background:#fff;">
-    <div><span class="close_description" style="padding:20px; float: right; cursor:pointer;">X</span></div>
-    <div id="marker_desc_text"></div>
-</div>
-<div id="map" style="width: 70%; height: 700px; float:left;"></div>
+
 <script type="text/javascript">
     var markers_data = JSON.parse('<?=json_encode($services);?>');
     function initMap() {
@@ -39,8 +69,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(document.getElementById('marker_desc'));
         var input = (document.getElementById('search_address'));
         var autocomplete = new google.maps.places.Autocomplete(input);
-
-
         google.maps.event.addListener(autocomplete, 'place_changed', function() {
             var place = autocomplete.getPlace();
 
@@ -81,18 +109,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $('#marker_desc').fadeIn();
         })
     }
-    $('#search_btn').click(function(){
-        map.setCenter(lastPlace);
-        map.setZoom(18);
-    });
-    $(document).ready(function(){
-        $('.close_description').click(function(){
-            $('#marker_desc').fadeOut();
-        });
-    })
 </script>
 <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA4wG__6Tde9l83sGXz4DdT-KwjrKTF-lQ&callback=initMap&libraries=places'>
 </script>
+
+
 </body>
 </html>
 
