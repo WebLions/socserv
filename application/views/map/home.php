@@ -36,6 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <i class="glyphicon glyphicon-chevron-down "></i>
                     </div>
                     <div class="filter-content">
+                        <?php $rel = json_decode($relation); ?>
                         <?php foreach($cat['values'] as $val): ?>
                             <div class="btn-group" data-toggle="buttons">
                                 <div class="btn btn-success">
@@ -43,6 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <span class="glyphicon glyphicon-ok"></span>
                                 </div>
                                 <label for="filter<?=$cat['id'];?>_val<?=$val['id'];?>"><?=$val['name'];?></label>
+                                <span class="label label-success"><?=isset($rel->{$val['id']})? count($rel->{$val['id']}):0;?></span>
                             </div>
                             <br>
                         <?php endforeach;?>
@@ -50,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
             <?php endforeach; ?>
+            <button class="btn btn-primary" id="clear_filter">Очистити фільтр</button>
         </div>
         <div class="col-lg-9">
             <div id="map" class="map"></div>
@@ -104,6 +107,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             });
             /* Все, опасносности больше нет, можно дальше исправлять :) */
 
+        });
+
+        $('#clear_filter').click(function(){
+            $('.filter_box').each(function(i,el) {
+                $(el).prop('checked',false);
+            });
+            $.each(markers,function(index,marker){
+                marker.setVisible(true);
+            });
         });
     });
     function initMap() {
