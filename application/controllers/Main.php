@@ -8,8 +8,14 @@ class Main extends CI_Controller {
 		$this->load->model('categories_model');
 		$this->load->model('filters_model');
 		$this->load->model('service_model');
+		$this->load->model('main_model');
 		$this->data['categories'] = $this->categories_model->getCategories();
 		$this->data['filters'] = $this->filters_model->getFilters();
+
+		foreach ($this->data['categories'] as $key=>$value) {
+			$params['category_ids'] = $value['id'];
+			$this->data['categories'][$key]['values'] = $this->filters_model->getFilters($params);
+		}
 
 		$services = $this->service_model->getServices();
 		for($i=0;$i<count($services);$i++){
@@ -17,10 +23,13 @@ class Main extends CI_Controller {
 		};
 		$this->data['services'] = $services;
 
-		foreach ($this->data['categories'] as $key=>$value) {
-			$params['category_ids'] = $value['id'];
-			$this->data['categories'][$key]['values'] = $this->filters_model->getFilters($params);
+		$this->data['relation'] = $this->main_model->getRelations();
+
+		foreach ($this->data['relation'] as $key=>$value) {
+			$id = $value['id_filter'];
+			$result[$id][] = $value['id_services'];
 		}
+		$this->data['relation'] = $result;
 
 		$this->load->view('map/home', $this->data);
 	}
