@@ -21,9 +21,9 @@ class Main extends CI_Controller {
 		for($i=0;$i<count($services);$i++){
 			$services[$i]['coordinates'] = json_decode($services[$i]['coordinates']);
 		};
-		$this->data['services'] = $services;
+		$this->data['services'] = json_encode($services);
 
-		$this->data['relation'] = $this->main_model->getRelations();
+		$this->data['relation'] = json_encode($this->main_model->getRelations());
 
 		foreach ($this->data['relation'] as $key=>$value) {
 			$id = $value['id_filter'];
