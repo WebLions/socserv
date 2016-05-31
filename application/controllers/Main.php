@@ -10,8 +10,6 @@ class Main extends CI_Controller {
 		$this->load->model('service_model');
 		$this->load->model('main_model');
 		$this->data['categories'] = $this->categories_model->getCategories();
-		$this->data['filters'] = $this->filters_model->getFilters();
-
 		foreach ($this->data['categories'] as $key=>$value) {
 			$params['category_ids'] = $value['id'];
 			$this->data['categories'][$key]['values'] = $this->filters_model->getFilters($params);
@@ -23,13 +21,13 @@ class Main extends CI_Controller {
 		};
 		$this->data['services'] = json_encode($services);
 
-		$this->data['relation'] = json_encode($this->main_model->getRelations());
+		$this->data['relation'] = $this->main_model->getRelations();
 
 		foreach ($this->data['relation'] as $key=>$value) {
 			$id = $value['id_filter'];
 			$result[$id][] = $value['id_services'];
 		}
-		$this->data['relation'] = $result;
+		$this->data['relation'] = json_encode($result);
 
 		$this->load->view('map/home', $this->data);
 	}
