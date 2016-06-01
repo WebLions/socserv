@@ -18,7 +18,7 @@ class Admin extends CI_Controller {
         {
             //вызов страницы авторизации
 //            $this->auth();
-            echo 'login';
+            $this->load->view('admin/login');
         }
 
     }
@@ -30,10 +30,12 @@ class Admin extends CI_Controller {
         }
         $this->load->model('user_model');
 
+
         $post['login'] = md5($post['login']);
         $data = array('login' =>$post['login'], 'password'=>$post['password']);
         if($this->user_model->auth($data)){
             $_SESSION['admin'] = true;
+
             // редирект на главную
         }
         else{

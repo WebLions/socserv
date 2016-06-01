@@ -6,8 +6,7 @@ $(document).ready(function(){
         map.setZoom(18);
     });
 
-
-        $('.close_description').click(function(){
+        $('.close').click(function(){
             $('#marker_desc').fadeOut();
         });
     $(function() {
