@@ -41,7 +41,7 @@ class Filters_services_model extends CI_Model {
         if (empty($data)) {
             return FALSE;
         }
-        $q = $this->db->insert('filters_services', $data);
+        $q = $this->db->insert_batch('filters_services', $data);
         if ($q) {
             $return = $this->db->insert_id();
         }

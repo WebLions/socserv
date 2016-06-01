@@ -14,7 +14,6 @@ class Main extends CI_Controller {
 			$params['category_ids'] = $value['id'];
 			$this->data['categories'][$key]['values'] = $this->filters_model->getFilters($params);
 		}
-
 		$services = $this->service_model->getServices();
 		for($i=0;$i<count($services);$i++){
 			$services[$i]['coordinates'] = json_decode($services[$i]['coordinates']);
@@ -29,6 +28,8 @@ class Main extends CI_Controller {
 		}
 		$this->data['relation'] = json_encode($result);
 
+//		$this->load->view('header');
 		$this->load->view('map/home', $this->data);
+//		$this->load->view('footer');
 	}
 }
