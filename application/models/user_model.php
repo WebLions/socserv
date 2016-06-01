@@ -9,8 +9,19 @@ class User_model extends CI_Model
         parent::__construct();
     }
 
-   public function auth()
+   public function auth($data)
    {
-        return 'Admin auth';
+       if(isset($data['login']) && isset($data['password']))
+       {
+           $this->db->where('login', $data['login']);
+           $this->db->where('password', $data['password']);
+           $return = $this->db->get('users');
+           if ($return->result_id->num_rows){
+               return true;
+           }
+           else return false;
+       }
+
+
    }
 }

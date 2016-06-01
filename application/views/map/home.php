@@ -16,6 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </head>
 <body>
+
 <div class="container-fluid">
 
     <div class="row">
@@ -36,6 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <i class="glyphicon glyphicon-chevron-down "></i>
                     </div>
                     <div class="filter-content">
+
                         <?php $rel = json_decode($relation); ?>
                         <?php foreach($cat['values'] as $val): ?>
                             <div class="btn-group" data-toggle="buttons">
@@ -61,7 +63,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 </div>
-
+<div id="marker_desc" style="display:none; width: 300px; margin-left:-150px; height: 200px; margin-top: -300px; margin-bottom: 20px; background:#fff;">
+    <div><span class="close_description" style="padding:20px; float: right; cursor:pointer;">X</span></div>
+    <div id="marker_desc_text"></div>
+</div>
 <script type="text/javascript">
     var markers_data = JSON.parse('<?=$services;?>');
     var filters = JSON.parse('<?=$relation;?>');
@@ -151,7 +156,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             map: map
         });
         var infowindow = new google.maps.InfoWindow({
-            content: data.adres
+            content: data.name
         });
         marker.addListener('mouseover',function(){
             infowindow.open(map,marker);
