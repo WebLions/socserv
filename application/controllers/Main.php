@@ -32,4 +32,5 @@ class Main extends CI_Controller {
 		$this->load->view('map/home', $this->data);
 //		$this->load->view('footer');
 	}
+
 }

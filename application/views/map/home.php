@@ -16,8 +16,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </head>
 <body>
-
 <div class="container-fluid">
+    <div class="row header">
+        <div class="col-lg-1">
+            <div class="logo">
+                <img src="/front-end/images/footer_logo.png">
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="soc-title">
+                Соціальні служби міста Одеса
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="soc-contacts">
+                +380 95 555 55 555
+            </div>
+        </div>
+    </div>
+
 
     <div class="row">
         <div class="col-lg-3 side-bar">
@@ -37,16 +54,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <i class="glyphicon glyphicon-chevron-down "></i>
                     </div>
                     <div class="filter-content">
-
                         <?php $rel = json_decode($relation); ?>
                         <?php foreach($cat['values'] as $val): ?>
                             <div class="btn-group" data-toggle="buttons">
-                                <div class="btn btn-success">
+                                <div class="btn btn-primary">
                                     <input type="checkbox" id="filter<?=$val['id'];?>" filter_id="<?=$val['id'];?>" cat_id="<?=$cat['id'];?>" class="filter_box"/>
                                     <span class="glyphicon glyphicon-ok"></span>
                                 </div>
                                 <label for="filter<?=$cat['id'];?>_val<?=$val['id'];?>"><?=$val['name'];?></label>
-                                <span class="label label-success"><?=isset($rel->{$val['id']})? count($rel->{$val['id']}):0;?></span>
+                                <span class="label">( <?=isset($rel->{$val['id']})? count($rel->{$val['id']}):0;?> )</span>
                             </div>
                             <br>
                         <?php endforeach;?>
@@ -61,10 +77,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 
-
+    <div class="row footer">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="soc-footer-title">
+                ©Розроблено студентами ОНПУ , 2016
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="soc-footer-login">
+                <a href="/auth">Вхід для співробітників</a>
+                <i class="glyphicon glyphicon-log-in"></i>
+            </div>
+        </div>
+    </div>
 </div>
-<div id="marker_desc" style="display:none; width: 300px; margin-left:-150px; height: 200px; margin-top: -300px; margin-bottom: 20px; background:#fff;">
-    <div><span class="close_description" style="padding:20px; float: right; cursor:pointer;">X</span></div>
+
+<div id="marker_desc" class="marker-desc">
+    <div><span class="close" ><i class="glyphicon glyphicon-remove"></i></span></div>
     <div id="marker_desc_text"></div>
 </div>
 <script type="text/javascript">
@@ -118,6 +147,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $('.filter_box').each(function(i,el) {
                 $(el).prop('checked',false);
             });
+            $('.btn-primary').each(function(i,el){
+                $(el).removeClass('active');
+            });
             $.each(markers,function(index,marker){
                 marker.setVisible(true);
             });
@@ -156,7 +188,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             map: map
         });
         var infowindow = new google.maps.InfoWindow({
-            content: data.name
+            content: data.adres
         });
         marker.addListener('mouseover',function(){
             infowindow.open(map,marker);
@@ -165,7 +197,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             infowindow.close(map,marker);
         })
         marker.addListener('click',function(){
-            var code = '<h3><b>Название:</b><span>'+data.name+'</span></h3><br><p><b>Адрес:</b>'+data.adres+'</p>';
+            var code = '<div class="org-content"><p class="org-title">Название:</p><span class="org-name">'+data.name+'</span><p class="org-adress"><b>Адрес:</b>'+data.adres+'</p></div>';
             $('#marker_desc_text').html(code);
             $('#marker_desc').fadeIn();
         });
