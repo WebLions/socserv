@@ -58,6 +58,17 @@ class Filters_services_model extends CI_Model {
      * @return boolean
      */
     public function updateFiltersServices($params = array()) {
+        if (!empty($params['filter_ids']))
+        {
+            $id = (array) $params['filter_ids'];
+            $result = $this->getFiltersServices(array('filter_ids' => $id));
+            if (empty($result)) {
+                return FALSE;
+            }
+            $id = (array) $params['filter_ids'];
+            $this->db->where_in('id_filter', $id);
+
+        }
         $result = $this->getFiltersServices(array('ids' => $id));
         if (empty($result)) {
             return FALSE;

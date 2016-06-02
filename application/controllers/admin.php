@@ -13,6 +13,14 @@ class Admin extends CI_Controller {
         {
             $this->load->model('service_model');
             $this->data['services'] = $this->service_model->getServices();
+
+            $this->load->model('categories_model');
+            $this->load->model('filters_model');
+            $this->data['categories'] = $this->categories_model->getCategories();
+            foreach ($this->data['categories'] as $key=>$value) {
+                $params['category_ids'] = $value['id'];
+                $this->data['categories'][$key]['values'] = $this->filters_model->getFilters($params);
+            }
             //главная страница — Социальные службы
             $this->load->view('admin/header');
             $this->load->view('admin/home', $this->data);
