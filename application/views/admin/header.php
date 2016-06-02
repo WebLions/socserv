@@ -46,4 +46,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- /.navbar-static-side -->
     </nav>
 
-    <div id="page-wrapper" style="min-height: 299px;">
+    <div id="container-fluid" style="min-height: 299px;">
