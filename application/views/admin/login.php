@@ -22,10 +22,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="login-panel panel panel-default">
                 <div class="panel-heading">Вхід</div>
                 <div class="panel-body">
-                    <form role="form">
+                    <form  method="post" role="form" action="admin/auth">
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Логін" name="email" type="email" autofocus="">
+                                <input class="form-control" placeholder="Логін" name="login"  autofocus="">
                             </div>
                             <div class="form-group">
                                 <input class="form-control" placeholder="Пароль" name="password" type="password" value="">
