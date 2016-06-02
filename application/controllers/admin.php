@@ -14,7 +14,10 @@ class Admin extends CI_Controller {
             $this->load->model('service_model');
             $this->data['services'] = $this->service_model->getServices();
             //главная страница — Социальные службы
+            $this->load->view('admin/header');
             $this->load->view('admin/home', $this->data);
+            $this->load->view('admin/footer');
+
         }
         else
         {
