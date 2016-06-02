@@ -160,6 +160,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 marker.setVisible(true);
             });
             $('#selected_filters').html('');
+
         });
     });
     function initMap() {
