@@ -24,7 +24,7 @@
     color:#fff;
 }
 .side-bar{
-    height: 700px;
+    min-height: 600px;
     padding: 15px;
 
 }
@@ -53,7 +53,7 @@
 }
 
 .map{
-    height: 700px;
+    min-height: 600px;
 }
 
 .filter-category-item{
@@ -129,3 +129,6 @@
     color:#fff;
     font: 18px Arial;
 }
+
+.login-form{margin-top:15%;}
+.login-btn{width:100%;}

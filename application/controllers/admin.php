@@ -18,7 +18,7 @@ class Admin extends CI_Controller {
         {
             //вызов страницы авторизации
 //            $this->auth();
-            $this->load->view('admin/login');
+
         }
 
     }
@@ -41,6 +41,13 @@ class Admin extends CI_Controller {
         else{
             echo 'Ошибка авторизации';
         }
+    }
+
+    public function login(){
+        $this->load->view('/admin/login');
+    }
+    public function home(){
+        $this->load->view('/admin/home');
     }
     //Службы
     //Фильтры
