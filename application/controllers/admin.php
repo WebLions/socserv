@@ -46,6 +46,9 @@ class Admin extends CI_Controller {
     public function login(){
         $this->load->view('/admin/login');
     }
+    public function home(){
+        $this->load->view('/admin/home');
+    }
     //Службы
     //Фильтры
         //добавить

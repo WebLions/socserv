@@ -87,6 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="soc-footer-login">
                 <a href="/admin/login">Вхід для співробітників</a>
                 <i class="glyphicon glyphicon-log-in"></i>
+                <a href="/admin/home">Вхід для співробітників</a>
             </div>
         </div>
     </div>
