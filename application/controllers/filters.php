@@ -23,14 +23,14 @@ class Filters extends CI_Controller {
     public function editFilter() {
         $get = $this->input->get();
         if (empty($get['id'])) {
-            redirect('/404');
+            redirect('/404', 'refresh');
         }
         $id = $get['id'];
         if (!is_integer($id)) {
             $id = (int) $id;
         }
-        $this->load->model('categories_model');
-        $filter = $this->categories_model->getFilters(array('ids' => $id));
+        $this->load->model('filters_model');
+        $filter = $this->filters_model->getFilters(array('ids' => $id));
         $this->data['filter'] = $filter;
         $this->load->view('admin/filters', $this->data);
     }

@@ -75,16 +75,16 @@ class Categories_model extends CI_Model {
     /**
      * Удаляет категорию
      *
-     * @param integer $params['id'] id записи
+     * @param integer $params['ids'] id записи
      *
      * @return array
      */
     public function deleteCategories($params = array()) {
-        if (empty($params['id'])) {
+        if (empty($params['ids'])) {
             return FALSE;
         }
-        $id = (int) $params['id'];
-        $this->db->where('id', $id);
+        $ids = (array) $params['ids'];
+        $this->db->where_in('id', $ids);
         $result = $this->db->delete('categories');
         return $result;
     }
