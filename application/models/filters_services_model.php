@@ -19,11 +19,11 @@ class Filters_services_model extends CI_Model {
     public function getFiltersServices($params = array()) {
         if (!empty($params['filter_ids'])) {
             $id = (array) $params['filter_ids'];
-            $this->db->or_where_in('id_filter', $id);
+            $this->db->where_in('id_filter', $id);
         }
         if (!empty($params['services_ids'])) {
             $id = (array) $params['services_ids'];
-            $this->db->or_where_in('id_services', $id);
+            $this->db->where_in('id_services', $id);
         }
         $result = $this->db->get('filters_services');
         return $result;
