@@ -61,9 +61,9 @@ $route['admin/filter/add'] = 'filters/addFilters';
 $route['admin/filter/edit'] = 'filters/editFilter';
 $route['admin/filter/delete'] = 'filters/deleteFilters';
 
-$route['admin/category/add'] = 'category/add';
-$route['admin/category/edit'] = 'category/edit';
-$route['admin/category/delete'] = 'category/delete';
+$route['admin/category/add'] = 'category/addCategory';
+$route['admin/category/edit'] = 'category/editCategory';
+$route['admin/category/delete'] = 'category/deleteCategory';
 
 
 
