@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <?php foreach($cat['values'] as $val): ?>
                             <div class="btn-group" data-toggle="buttons">
                                 <div class="btn btn-primary">
-                                    <input type="checkbox" id="filter<?=$val['id'];?>" filter_id="<?=$val['id'];?>" cat_id="<?=$cat['id'];?>" class="filter_box"/>
+                                    <input type="checkbox" id="filter<?=$val['id'];?>" label_text="<?=$val['name'];?>" filter_id="<?=$val['id'];?>" cat_id="<?=$cat['id'];?>" class="filter_box"/>
                                     <span class="glyphicon glyphicon-ok"></span>
                                 </div>
                                 <label for="filter<?=$cat['id'];?>_val<?=$val['id'];?>"><?=$val['name'];?></label>
@@ -70,6 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
             <?php endforeach; ?>
+            <div id="selected_filters"></div>
             <button class="btn btn-primary" id="clear_filter">Очистити фільтр</button>
         </div>
         <div class="col-lg-9">
@@ -100,14 +101,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     var markers_data = JSON.parse('<?=$services;?>');
     var filters = JSON.parse('<?=$relation;?>');
     var any = false;
+    var filterhtml = '';
     markers = {};
     $(document).ready(function(){
         $('.filter_box').change(function(){
             console.clear();
             any = false;
             var elements = {};
+            filterhtml = '';
             $('.filter_box').each(function(i,el){
                 if($(el).prop('checked')) {
+                    filterhtml += '<span class="label label-primary">'+$(el).attr('label_text')+'</span>';
                     any = true;
                     if( elements[$(el).attr('cat_id')]===undefined)
                         elements[$(el).attr('cat_id')] = new Array();
@@ -116,7 +120,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     elements[$(el).attr('cat_id')] = elements[$(el).attr('cat_id')].concat(vals);
                 }
             });
-
+            if(filterhtml.length>0){
+                $('#selected_filters').html('<span>Выбраные фильтры:</span>'+filterhtml);
+            }
             /* МАГИЯ НЕ ТРОГАТЬ */
             var markers_index = new Array();
             var firstarray = new Array();
