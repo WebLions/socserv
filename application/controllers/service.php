@@ -28,14 +28,6 @@ class Service extends CI_Controller {
         if(!$_SESSION['admin']){
             return false;
         }
-//        $post = array(
-//            'name'=> 'Тест',
-//            'description'=>'test',
-//            'adres'=>'test',
-//            'phone'=>'test',
-//            'coordinates'=>'test',
-//            'id_filter'=>array(666, 999),
-//        );
         $post = $this->input->post();
         if (empty($post)) {
             return false;

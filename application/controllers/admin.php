@@ -11,14 +11,16 @@ class Admin extends CI_Controller {
     {
         if($_SESSION['admin'])
         {
-            //вызов главной
-            echo 'admin';
+            $this->load->model('service_model');
+            $this->data['services'] = $this->service_model->getServices();
+            //главная страница — Социальные службы
+            $this->load->view('admin/home', $this->data);
         }
         else
         {
-            //вызов страницы авторизации
-//            $this->auth();
-
+            $this->load->view('admin/header');
+            $this->load->view('admin/login');
+            $this->load->view('admin/footer');
         }
 
     }
@@ -29,16 +31,12 @@ class Admin extends CI_Controller {
             return false;
         }
         $this->load->model('user_model');
-
-
         $post['login'] = md5($post['login']);
-        $data = array('login' =>$post['login'], 'password'=>$post['password']);
-        if($this->user_model->auth($data)){
+        $data = array('login' => $post['login'], 'password' => $post['password']);
+        if ($this->user_model->auth($data)) {
             $_SESSION['admin'] = true;
-
             // редирект на главную
-        }
-        else{
+        } else {
             echo 'Ошибка авторизации';
         }
     }

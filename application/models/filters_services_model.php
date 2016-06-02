@@ -58,16 +58,12 @@ class Filters_services_model extends CI_Model {
      * @return boolean
      */
     public function updateFiltersServices($params = array()) {
-        if (empty($params['id'])) {
-            return FALSE;
-        }
-        $id = (int) $params['id'];
         $result = $this->getFiltersServices(array('ids' => $id));
         if (empty($result)) {
             return FALSE;
         }
         $this->db->where('id', $id);
-        $result = $this->db->update('filters_services', $params['data']);
+        $result = $this->db->update_batch('filters_services', $params['data']);
         return $result;
     }
 
