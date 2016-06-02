@@ -9,7 +9,7 @@ class Admin extends CI_Controller {
     }
     public function index()
     {
-        if($_SESSION['admin'])
+        if( isset($_SESSION['admin']) && $_SESSION['admin'])
         {
             $this->load->model('service_model');
             $this->data['services'] = $this->service_model->getServices();
@@ -17,7 +17,6 @@ class Admin extends CI_Controller {
             $this->load->view('admin/header');
             $this->load->view('admin/home', $this->data);
             $this->load->view('admin/footer');
-
         }
         else
         {
@@ -36,10 +35,17 @@ class Admin extends CI_Controller {
         $data = array('login' => $post['login'], 'password' => $post['password']);
         if ($this->user_model->auth($data)) {
             $_SESSION['admin'] = true;
-            $this->load->view('admin/home', $this->data);
+//            redirect('admin');
         } else {
             echo 'Ошибка авторизации';
         }
+    }
+    public function logout(){
+        if(isset($_SESSION['admin']) && $_SESSION['admin'])
+        {
+            $_SESSION['admin'] = false;
+        }
+//        redirect('admin');
     }
 
     public function login(){
@@ -48,15 +54,4 @@ class Admin extends CI_Controller {
     public function home(){
         $this->load->view('/admin/home');
     }
-    //Службы
-    //Фильтры
-        //добавить
-        //удалить
-        //редактировать
-    //Категории
-        //добавить
-        //удалить
-        //редактировать
-    //Сменить пароль
-
 }
