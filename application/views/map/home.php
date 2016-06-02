@@ -160,6 +160,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $.each(markers,function(index,marker){
                 marker.setVisible(true);
             });
+            $('#selected_filters').html('');
+
         });
     });
     function initMap() {
