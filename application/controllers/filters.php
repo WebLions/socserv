@@ -83,13 +83,13 @@ class Filters extends CI_Controller {
      * Удаляет данные фильтров
      */
     public function deleteFilters() {
-        $post = $this->input->post();
-        if (empty($post)) {
+        $get = $this->input->get();
+        if (empty($get)) {
             return FALSE;
         }
         $this->load->model('filters_model');
         $params = array(
-            'id' => $post['id'],
+            'id' => $get['id'],
         );
         $q = $this->filters_model->deleteFilters($params);
         if (!$q) {
