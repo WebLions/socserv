@@ -24,8 +24,9 @@
     color:#fff;
 }
 .side-bar{
-    min-height: 600px;
+    height: 600px;
     padding: 15px;
+    overflow-y: scroll;
 
 }
 .marker-desc{

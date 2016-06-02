@@ -28,9 +28,9 @@ class Main extends CI_Controller {
 		}
 		$this->data['relation'] = json_encode($result);
 
-//		$this->load->view('header');
+		$this->load->view('header');
 		$this->load->view('map/home', $this->data);
-//		$this->load->view('footer');
+    	$this->load->view('footer');
 	}
 
 }

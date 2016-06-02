@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-
     $('#search_btn').click(function(){
         map.setCenter(lastPlace);
         map.setZoom(18);
@@ -10,10 +9,10 @@ $(document).ready(function(){
         });
     $(function() {
         $('.filter-category').click(function(){
-            $('.filter-category-item').each(function(i,el) {
-                $(el).removeClass('open')
-            });
-            $(this).parent().toggleClass("open");
+             /* $('.filter-category-item').each(function(i,el) {
+                    $(el).removeClass('open')
+                });*/
+            $(this).parent().toggleClass('open');
         })
     })
 })
