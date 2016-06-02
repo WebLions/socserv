@@ -19,11 +19,11 @@ class Filters_services_model extends CI_Model {
     public function getFiltersServices($params = array()) {
         if (!empty($params['filter_ids'])) {
             $id = (array) $params['filter_ids'];
-            $this->db->or_where_in('id_filter', $id);
+            $this->db->where_in('id_filter', $id);
         }
         if (!empty($params['services_ids'])) {
             $id = (array) $params['services_ids'];
-            $this->db->or_where_in('id_services', $id);
+            $this->db->where_in('id_services', $id);
         }
         $result = $this->db->get('filters_services');
         return $result;
@@ -58,16 +58,12 @@ class Filters_services_model extends CI_Model {
      * @return boolean
      */
     public function updateFiltersServices($params = array()) {
-        if (empty($params['id'])) {
-            return FALSE;
-        }
-        $id = (int) $params['id'];
         $result = $this->getFiltersServices(array('ids' => $id));
         if (empty($result)) {
             return FALSE;
         }
         $this->db->where('id', $id);
-        $result = $this->db->update('filters_services', $params['data']);
+        $result = $this->db->update_batch('filters_services', $params['data']);
         return $result;
     }
 
