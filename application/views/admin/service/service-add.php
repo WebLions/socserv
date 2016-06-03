@@ -1,6 +1,6 @@
 <div class="col-lg-10">
     <div class="admin-content">
-    <form role="form" action="" method="post">
+    <form role="form" method="post">
     <div class="form-group">
         <label for="name">Назва</label>
         <input name="name" type="text" class="form-control" id="name">
