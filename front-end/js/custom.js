@@ -9,9 +9,9 @@ $(document).ready(function(){
         });
     $(function() {
         $('.filter-category').click(function(){
-             /* $('.filter-category-item').each(function(i,el) {
+             $('.filter-category-item').each(function(i,el) {
                     $(el).removeClass('open')
-                });*/
+                });
             $(this).parent().toggleClass('open');
         })
     })
