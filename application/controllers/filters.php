@@ -89,7 +89,7 @@ class Filters extends CI_Controller {
         }
         $this->load->model('filters_model');
         $params = array(
-            'id' => $get['id'],
+            'filter_id' => $get['id'],
         );
         $q = $this->filters_model->deleteFilters($params);
         if (!$q) {
