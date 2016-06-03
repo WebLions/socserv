@@ -7,15 +7,15 @@
     </div>
     <div class="form-group">
         <label for="contact">Опис</label>
-        <input name="contact" class="form-control" id="contact">
+        <input name="title" class="form-control" id="title">
     </div>
     <div class="form-group">
         <label for="other">Телефон</label>
-        <input name="other" class="form-control" id="other">
+        <input name="phone" class="form-control" id="phone">
     </div>
     <div class="form-group">
         <label for="other">Адреса</label>
-        <input name="other" class="form-control" id="other">
+        <input name="adres" class="form-control" id="adres">
     </div>
     <button type="submit" class="btn btn-default addcontragent">Добавить</button>
     <?php
