@@ -23,6 +23,7 @@ class Service extends CI_Controller {
         }
 //        $this->load->view('admin/add_service', $this->data);
     }
+    //Добавление адресов в фильтры автоматически
     public function add_post()
     {
         if(!$_SESSION['admin']){
