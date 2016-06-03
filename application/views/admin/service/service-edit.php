@@ -3,19 +3,19 @@
         <form role="form" method="post">
             <div class="form-group">
                 <label for="name">Назва</label>
-                <input name="name" type="text" class="form-control" id="name">
+                <input required name="name" type="text" class="form-control" id="name">
             </div>
             <div class="form-group">
                 <label for="contact">Опис</label>
-                <input name="title" class="form-control" id="title">
+                <input required name="title" class="form-control" id="title">
             </div>
             <div class="form-group">
                 <label for="other">Телефон</label>
-                <input name="phone" class="form-control" id="phone">
+                <input required name="phone" class="form-control" id="phone">
             </div>
             <div class="form-group">
                 <label for="other">Адреса</label>
-                <input name="adres" class="form-control" id="adres">
+                <input required name="adres" class="form-control" id="adres">
             </div>
             <button type="submit" class="btn btn-primary">Додати</button>
             <div class="row category-list">
