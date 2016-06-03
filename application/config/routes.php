@@ -57,6 +57,7 @@ $route['admin/service/add'] = 'service/add';
 $route['admin/service/edit'] = 'service/edit';
 $route['admin/service/delete'] = 'service/delete';
 
+$route['admin/filter/'] = 'filters/addFilters';
 $route['admin/filter/add'] = 'filters/addFilters';
 $route['admin/filter/edit'] = 'filters/editFilter';
 $route['admin/filter/delete'] = 'filters/deleteFilters';

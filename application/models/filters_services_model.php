@@ -88,9 +88,8 @@ class Filters_services_model extends CI_Model {
      */
     public function deleteFiltersServices($params = array()) {
         if (empty($params['id'])) {
-            $id = (array) $params['id'];
-            $this->db->where_in('id', $id);
-            return FALSE;
+            $id = (int) $params['id'];
+            $this->db->where('id', $id);
         }
         if (!empty($params['filter_ids']))
         {
