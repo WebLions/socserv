@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <a href="tables.html">Фільтри</a>
                 </li>
                 <li>
-                    <a href="forms.html">Категорії фільтрів</a>
+                    <a href="/admin/category">Категорії фільтрів</a>
                 </li>
                 <li>
                     <a href="#">Налаштування</span></a>
