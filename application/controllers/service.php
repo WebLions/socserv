@@ -22,7 +22,7 @@ class Service extends CI_Controller {
             $this->data['categories'][$key]['values'] = $this->filters_model->getFilters($params);
         }
         $this->load->view('admin/header');
-//        $this->load->view('admin/add_service', $this->data);
+        $this->load->view('admin/service/service-add', $this->data);
         $this->load->view('admin/footer');
     }
     //Добавление адресов в фильтры автоматически

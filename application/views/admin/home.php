@@ -29,7 +29,7 @@
 </div>
 <div class="add-block">
     <div class="btn btn-primary">
-        <a href="admin/service/add">Додати службу </a><i class="glyphicon glyphicon-plus"></i>
+        <a href="/admin/service/add">Додати службу </a><i class="glyphicon glyphicon-plus"></i>
     </div>
 </div>
 </div>
