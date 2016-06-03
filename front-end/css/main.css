@@ -133,3 +133,17 @@
 
 .login-form{margin-top:15%;}
 .login-btn{width:100%;}
+
+/*------------------------------------------------ADMIN PANEL----------------------------------*/
+
+
+.side-bar-menu a:last-child:hover{
+    background-color: #fff;
+    color:#3a87e3;
+    text-decoration: none;
+}
+.admin-content{padding:20px 20px 0px 20px;}
+.add-block{text-align: center;}
+.add-block {padding-bottom:20px;}
+.add-block a{color:#fff;text-decoration:none;}
+.add-block a:hover{color:#fff;text-decoration:none;cursor:pointer}
