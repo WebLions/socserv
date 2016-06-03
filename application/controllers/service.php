@@ -42,6 +42,18 @@ class Service extends CI_Controller {
             'coordinates'=>$post['coordinates'],
         );
         $id_service = $this->service_model->insertServices($service);
+        if (!empty($post['disctrict'])) {
+            $this->load->model('filters_model');
+            $q = $this->filters_model->getFilters(array('name' => $post['disctrict'], 'category_ids' => 2));
+            if (!empty($q)) {
+                $params = array(
+                    'name' => $post['disctrict'],
+                    'category_ids' => 2,
+                );
+                $id = $this->filters_model->addFilters(array('name' => $post['disctrict']));
+                $post['id_filter'] = (isset($post['id_filter']) ? array_push($post['id_filter'], $id) : $id);
+            }
+        }
         if(isset($post['id_filter'])){
             $this->load->model('filters_services_model');
             $relations = array();

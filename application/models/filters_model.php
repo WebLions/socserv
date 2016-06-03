@@ -26,6 +26,10 @@ class Filters_model extends CI_Model {
             $where = (array)$params['ids'];
             $this->db->where_in('id', $where);
         }
+        if (!empty($params['name'])) {
+            $where = (string)$params['ids'];
+            $this->db->where('name', $where);
+        }
         $result = $this->db->get('filters');
         if (!empty($result)) {
             $return = $result->result_array();
