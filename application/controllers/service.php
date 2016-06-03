@@ -66,6 +66,7 @@ class Service extends CI_Controller {
             }
             $this->filters_services_model->insertFiltersServices($relations);
         }
+        redirect('/admin');
     }
     public function edit($id){
         if(!$_SESSION['admin']){

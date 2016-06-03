@@ -22,49 +22,28 @@
         <input type="text" hidden name="adres" id="search_addr">
     <button type="submit" class="btn btn-default addcontragent">Добавить</button>
         <div class="row category-list">
-            <div class="col-lg-6 left-cat">
-                <?php
-                $i=1;
-                foreach($categories as $cat):?>
-                    <?php
-                    if($cat['id']==$i){?>
+                <?php foreach($categories as $cat):?>
+                    <div class="col-lg-6 left-cat">
                     <div class="filter-category-item" id="<?=$cat['id'];?>">
                         <div class="filter-category">
                             <p><?=$cat['name'];?></p>
                         </div>
                         <br>
-                        <select class="btn btn-primary cat-select">
+                        <select name="id_filter[]" class="btn btn-primary cat-select">
+                            <option>Не выбрано</option>
                             <?php foreach($cat['values'] as $val): ?>
-                                <option><?=$val['name'];?></option>
+                                <option value="<?=$val['id'];?>"><?=$val['name'];?></option>
                             <?php endforeach;?>
                         </select>
 
                     </div>
-                <?php $i+=2;} endforeach; ?>
             </div>
-            <div class="col-lg-6 right-cat">
-                <?php
-                $i=2;
-                foreach($categories as $cat):?>
-                    <?php
-                    if($cat['id']==$i){?>
-                        <div class="filter-category-item" id="<?=$cat['id'];?>">
-                            <div class="filter-category">
-                                <p><?=$cat['name'];?></p>
-                            </div>
-                            <br>
-                            <select class="btn btn-primary cat-select">
-                                <?php foreach($cat['values'] as $val): ?>
-                                    <option><?=$val['name'];?></option>
-                                <?php endforeach;?>
-                            </select>
-                        </div>
-                        <?php $i+=2;} endforeach; ?>
-            </div>
+                <?php endforeach; ?>
+
         </div>
 </form>
     </div>
-
+</div>
 
     <script type="text/javascript">
         function initMap() {
