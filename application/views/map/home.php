@@ -20,7 +20,7 @@
                         <?php foreach($cat['values'] as $val): ?>
                             <div class="btn-group" data-toggle="buttons">
                                 <div class="btn btn-primary">
-                                    <input type="checkbox" id="filter<?=$val['id'];?>" label_text="<?=$val['name'];?>" filter_id="<?=$val['id'];?>" cat_id="<?=$cat['id'];?>" class="filter_box"/>
+                                    <input type="checkbox" id="filter<?=$val['id'];?>" label_text="<?=$cat['name'].' : '.$val['name'];?>"  filter_id="<?=$val['id'];?>" cat_id="<?=$cat['id'];?>" class="filter_box"/>
                                     <span class="glyphicon glyphicon-ok"></span>
                                 </div>
                                 <label for="filter<?=$cat['id'];?>_val<?=$val['id'];?>"><?=$val['name'];?></label>

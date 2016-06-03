@@ -41,7 +41,7 @@
                 }
             });
             if(filterhtml.length>0){
-                $('#selected_filters').html('<span>Выбраные фильтры:</span>'+filterhtml);
+                $('#selected_filters').html('<span>Выбраные фильтры:<br></span>'+filterhtml);
             }
             /* МАГИЯ НЕ ТРОГАТЬ */
             var markers_index = new Array();
