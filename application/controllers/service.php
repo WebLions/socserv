@@ -21,7 +21,9 @@ class Service extends CI_Controller {
             $params['category_ids'] = $value['id'];
             $this->data['categories'][$key]['values'] = $this->filters_model->getFilters($params);
         }
+        $this->load->view('admin/header');
 //        $this->load->view('admin/add_service', $this->data);
+        $this->load->view('admin/footer');
     }
     //Добавление адресов в фильтры автоматически
     public function add_post()
@@ -65,13 +67,13 @@ class Service extends CI_Controller {
             $this->filters_services_model->insertFiltersServices($relations);
         }
     }
-    public function edit(){
+    public function edit($id){
         if(!$_SESSION['admin']){
             return false;
         }
         //Загружаем данные про службу
         $this->load->model('service_model');
-        $parameters = array('ids' => $this->input->get('id'));
+        $parameters = array('ids' => $id);
         $this->data['service'] = $this->service_model->getServices($parameters);
 
         //Загружаем категории
@@ -85,10 +87,12 @@ class Service extends CI_Controller {
 
         //Выбираем какая категория принадлежит службе
         $this->load->model('filters_services_model');
-        $par = array('services_ids' => $this->data['service']['id']);
+        $par = array('services_ids' => $this->data['service'][0]['id']);
         $this->data['checked'] = $this->filters_services_model->getFiltersServices($par);
 
-        //        $this->load->view('admin/edit_service', $this->data);
+        $this->load->view('admin/header');
+        $this->load->view('admin/service/service-edit', $this->data);
+        $this->load->view('admin/footer');
     }
     public function edit_post(){
         if(!$_SESSION['admin']){
@@ -132,6 +136,7 @@ class Service extends CI_Controller {
         $this->service_model->deleteServices($delete);
         $this->load->model('filters_services_model');
         $this->filters_services_model->deleteServices($this->input->get('id'));
+        header('Location: /admin');
     }
 
 

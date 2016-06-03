@@ -54,7 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['admin/service/add'] = 'service/add';
-$route['admin/service/edit'] = 'service/edit';
+$route['admin/service/edit/(:num)'] = 'service/edit/$1';
 $route['admin/service/delete'] = 'service/delete';
 
 $route['admin/filter/add'] = 'filters/addFilters';
