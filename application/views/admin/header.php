@@ -30,7 +30,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 Адміністративна панель
             </div>
         </div>
-
     </div>
     <div class="row">
         <div class="col-lg-2">
