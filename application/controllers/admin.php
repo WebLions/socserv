@@ -43,7 +43,7 @@ class Admin extends CI_Controller {
         $data = array('login' => $post['login'], 'password' => $post['password']);
         if ($this->user_model->auth($data)) {
             $_SESSION['admin'] = true;
-//            redirect('admin');
+            redirect('/admin', 'refresh');
         } else {
             echo 'Ошибка авторизации';
         }
@@ -53,7 +53,7 @@ class Admin extends CI_Controller {
         {
             $_SESSION['admin'] = false;
         }
-//        redirect('admin');
+        redirect('/', 'refresh');
     }
 
     public function login(){
