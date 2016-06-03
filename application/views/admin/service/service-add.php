@@ -18,21 +18,47 @@
         <input name="adres" class="form-control" id="adres">
     </div>
     <button type="submit" class="btn btn-default addcontragent">Добавить</button>
-    <?php
-    foreach($categories as $cat):?>
-        <div class="filter-category-item" id="<?=$cat['id'];?>">
-            <div class="filter-category">
-                <a><?=$cat['name'];?></a>
-                <i class="glyphicon glyphicon-chevron-down "></i>
+        <div class="row category-list">
+            <div class="col-lg-6 left-cat">
+                <?php
+                $i=1;
+                foreach($categories as $cat):?>
+                    <?php
+                    if($cat['id']==$i){?>
+                    <div class="filter-category-item" id="<?=$cat['id'];?>">
+                        <div class="filter-category">
+                            <p><?=$cat['name'];?></p>
+                        </div>
+                        <br>
+                        <select class="btn btn-primary cat-select">
+                            <?php foreach($cat['values'] as $val): ?>
+                                <option><?=$val['name'];?></option>
+                            <?php endforeach;?>
+                        </select>
+
+                    </div>
+                <?php $i+=2;} endforeach; ?>
             </div>
-            <div class="filter-content">
-                    <section>
-                        <?php foreach($cat['values'] as $val): ?>
-                        <option><?=$val['name'];?></option>
-                        <?php endforeach;?>
-                    </section>
+            <div class="col-lg-6 right-cat">
+                <?php
+                $i=2;
+                foreach($categories as $cat):?>
+                    <?php
+                    if($cat['id']==$i){?>
+                        <div class="filter-category-item" id="<?=$cat['id'];?>">
+                            <div class="filter-category">
+                                <p><?=$cat['name'];?></p>
+                            </div>
+                            <br>
+                            <select class="btn btn-primary cat-select">
+                                <?php foreach($cat['values'] as $val): ?>
+                                    <option><?=$val['name'];?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
+                        <?php $i+=2;} endforeach; ?>
             </div>
         </div>
-    <?php endforeach; ?>
 </form>
     </div>
+</div>
