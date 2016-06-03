@@ -24,7 +24,7 @@
     color:#fff;
 }
 .side-bar{
-    height: 600px;
+    height: 700px;
     padding: 15px;
     overflow-y: scroll;
 
@@ -39,22 +39,34 @@
     background-color: #fff;
 }
 .marker-desc .close{
+    margin-top: -30px;
+    color: #3a87e3;
     font:18px Arial;
-    padding:5px;
     float: right;
     cursor:pointer;
+    text-shadow:none;
 }
-
+.marker-desc .close:hover{
+    color:#fff;
+}
 .org-content{
     font: 20px Arial;
-    padding: 5px 0px 20px 20px;
+    padding: 20px 0px 0px 0px;
 }
 .org-adress{
-    margin-top:20px;
+    background-color: #3a87e3;
+    margin-top: 20px;
+    padding: 10px 10px 10px 15px;
+    color: #fff;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    margin-bottom: 0px;
 }
+.org-name-block{padding:0px 15px 15px 15px;}
 
 .map{
-    min-height: 600px;
+    min-height: 700px;
 }
 
 .filter-category-item{
@@ -142,6 +154,7 @@
     color:#3a87e3;
     text-decoration: none;
 }
+.selected-filter{padding-bottom:20px;}
 .admin-content{padding:20px 20px 0px 20px;}
 .add-block{text-align: center;}
 .add-block {padding-bottom:20px;}

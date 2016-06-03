@@ -1,7 +1,7 @@
 <div class="row footer">
     <div class="col-lg-8 col-lg-offset-2">
         <div class="soc-footer-title">
-            ©Розроблено студентами ОНПУ , 2016
+            © Розроблено студентами ОНПУ , 2016
         </div>
     </div>
     <div class="col-lg-2">
@@ -137,7 +137,7 @@
             infowindow.close(map,marker);
         })
         marker.addListener('click',function(){
-            var code = '<div class="org-content"><span class="org-name">'+data.name+'</span><p class="org-adress"><b>Адрес:</b>'+data.adres+'</p></div>';
+            var code = '<div class="org-content"><div class="org-name-block"><span class="org-name">'+data.name+'</span></div><p class="org-adress"><b>Адрес:</b>'+data.adres+'</p></div>';
             $('#marker_desc_text').html(code);
             $('#marker_desc').fadeIn();
         });

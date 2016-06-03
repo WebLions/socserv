@@ -32,7 +32,7 @@
                     </div>
                 </div>
             <?php endforeach; ?>
-            <div id="selected_filters"></div>
+            <div class="selected-filter" id="selected_filters"></div>
             <button class="btn btn-primary" id="clear_filter">Очистити фільтр</button>
         </div>
         <div class="col-lg-9">
