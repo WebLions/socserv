@@ -46,18 +46,21 @@
             /* МАГИЯ НЕ ТРОГАТЬ */
             var markers_index = new Array();
             var firstarray = new Array();
+            var elements_count = 0;
             $.each(elements,function(index,val){
+                elements_count++;
                 if(firstarray.length==0) {
                     firstarray = val;
-                }else{
-                    $.each(val,function(i,v){
-                        if(firstarray.indexOf(v)>-1){
-                            markers_index.splice(1,0,v);
+                }else {
+                    $.each(val, function (i, v) {
+                        if (firstarray.indexOf(v) > -1) {
+                            markers_index.splice(1, 0, v);
                         }
                     })
                 }
             });
-            if(markers_index.length==0) markers_index = firstarray;
+            if(elements_count==1) markers_index = firstarray;
+            console.log(markers_index);
             $.each(markers,function(index,marker){
                 if((markers_index.indexOf(index)>=0)||(any==false)){
                     marker.setVisible(true);
@@ -65,6 +68,8 @@
                     marker.setVisible(false);
                 }
             });
+            if(any==false)
+                $('#selected_filters').html('');
             /* Все, опасносности больше нет, можно дальше исправлять :) */
 
         });
@@ -123,7 +128,7 @@
             map: map
         });
         var infowindow = new google.maps.InfoWindow({
-            content: data.adres
+            content: data.name
         });
         marker.addListener('mouseover',function(){
             infowindow.open(map,marker);
@@ -132,7 +137,7 @@
             infowindow.close(map,marker);
         })
         marker.addListener('click',function(){
-            var code = '<div class="org-content"><p class="org-title">Название:</p><span class="org-name">'+data.name+'</span><p class="org-adress"><b>Адрес:</b>'+data.adres+'</p></div>';
+            var code = '<div class="org-content"><span class="org-name">'+data.name+'</span><p class="org-adress"><b>Адрес:</b>'+data.adres+'</p></div>';
             $('#marker_desc_text').html(code);
             $('#marker_desc').fadeIn();
         });
