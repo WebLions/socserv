@@ -63,7 +63,7 @@ class Categories_model extends CI_Model {
             return FALSE;
         }
         $id = (int) $params['id'];
-        $result = $this->getFilters(array('ids' => $id));
+        $result = $this->getCategories(array('ids' => $id));
         if (empty($result)) {
             return FALSE;
         }
