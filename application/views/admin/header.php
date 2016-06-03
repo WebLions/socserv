@@ -10,40 +10,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script type="text/javascript" src="/front-end/js/bootstrap.js"></script>
     <script type="text/javascript" src="/front-end/js/custom.js"></script>
     <link rel="stylesheet" href="/front-end/css/main.css">
-    <link rel="stylesheet" href="/front-end/css/sb-admin-2.css">
     <link rel="stylesheet" href="/front-end/css/bootstrap.css">
     <link rel="stylesheet" href="/front-end/css/bootstrap-theme.css">
 
 
 </head>
 <body>
-<div id="wrapper">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-                <ul class="nav in" id="side-menu">
-                    <li>
-                        <a href="#">Служби</a>
-                    </li>
-                    <li>
-                        <a href="tables.html">Фільтри</a>
-                    </li>
-                    <li>
-                        <a href="forms.html">Категорії фільтрів</a>
-                    </li>
-                    <li>
-                        <a href="#">Налаштування</span></a>
-                    </li>
-                    <li>
-                        <a href="#">Вихід</span></a>
-                    </li>
-                </ul>
+<div class="container-fluid">
+    <div class="row header">
+        <div class="col-lg-1">
+            <div class="logo">
+                <a href="/">
+                    <img src="/front-end/images/footer_logo.png">
+                </a>
             </div>
-            <!-- /.sidebar-collapse -->
         </div>
-        <!-- /.navbar-static-side -->
-    </nav>
+        <div class="col-lg-11">
+            <div class="soc-title">
+                Адміністративна панель
+            </div>
+        </div>
 
-    <div id="container-fluid" style="min-height: 299px;">
+    </div>
+    <div class="row">
+        <div class="col-lg-2">
+            <ul class="nav in" id="side-menu">
+                <li>
+                    <a href="#">Служби</a>
+                </li>
+                <li>
+                    <a href="tables.html">Фільтри</a>
+                </li>
+                <li>
+                    <a href="forms.html">Категорії фільтрів</a>
+                </li>
+                <li>
+                    <a href="#">Налаштування</span></a>
+                </li>
+                <li>
+                    <a href="#">Вихід</span></a>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+
+
+
