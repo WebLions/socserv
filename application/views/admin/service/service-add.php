@@ -17,29 +17,50 @@
         <label for="other">Адреса</label>
         <input name="adres" class="form-control" id="adres">
     </div>
-    <button type="submit" class="btn btn-default addcontragent">Добавить</button>
-    <?php
-    foreach($categories as $cat):?>
-        <div class="filter-category-item" id="<?=$cat['id'];?>">
-            <div class="filter-category">
-                <a><?=$cat['name'];?></a>
-                <i class="glyphicon glyphicon-chevron-down "></i>
-            </div>
-            <div class="filter-content">
-                <?php $rel = json_decode($relation); ?>
-                <?php foreach($cat['values'] as $val): ?>
-                    <div class="btn-group" data-toggle="buttons">
-                        <div class="btn btn-primary">
-                            <input type="checkbox" id="filter<?=$val['id'];?>" label_text="<?=$val['name'];?>" filter_id="<?=$val['id'];?>" cat_id="<?=$cat['id'];?>" class="filter_box"/>
-                            <span class="glyphicon glyphicon-ok"></span>
+    <button type="submit" class="btn btn-primary">Додати</button>
+        <div class="row category-list">
+            <div class="col-lg-6 left-cat">
+                <?php
+                $i=1;
+                foreach($categories as $cat):?>
+                    <?php
+                    if($cat['id']==$i){?>
+                    <div class="filter-category-item" id="<?=$cat['id'];?>">
+                        <div class="filter-category">
+                            <p><?=$cat['name'];?></p>
                         </div>
-                        <label for="filter<?=$cat['id'];?>_val<?=$val['id'];?>"><?=$val['name'];?></label>
-                        <span class="label">( <?=isset($rel->{$val['id']})? count($rel->{$val['id']}):0;?> )</span>
+                        <br>
+                        <select class="btn btn-primary cat-select">
+                            <option>Оберіть категорію служби</option>
+                            <?php foreach($cat['values'] as $val): ?>
+                                <option><?=$val['name'];?></option>
+                            <?php endforeach;?>
+                        </select>
+
                     </div>
-                    <br>
-                <?php endforeach;?>
+                <?php $i+=2;} endforeach; ?>
+            </div>
+            <div class="col-lg-6 right-cat">
+                <?php
+                $i=2;
+                foreach($categories as $cat):?>
+                    <?php
+                    if($cat['id']==$i){?>
+                        <div class="filter-category-item" id="<?=$cat['id'];?>">
+                            <div class="filter-category">
+                                <p><?=$cat['name'];?></p>
+                            </div>
+                            <br>
+                            <select class="btn btn-primary cat-select">
+                                <option>Оберіть категорію служби</option>
+                                <?php foreach($cat['values'] as $val): ?>
+                                    <option><?=$val['name'];?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
+                        <?php $i+=2;} endforeach; ?>
             </div>
         </div>
-    <?php endforeach; ?>
 </form>
     </div>
+</div>
