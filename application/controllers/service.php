@@ -120,22 +120,23 @@ class Service extends CI_Controller {
             foreach($post['id_filter'] as $value)
             {
                 $array = array('id_services' =>$post['id'], 'id_filter' => $value);
-                $relations[] = $array;
+                $relations['data'] = $array;
             }
-            $this->filters_services_model->updateServices($relations);
+            $relations['services_ids'] = $post['id'];
+            $this->filters_services_model->updateFiltersServices($relations);
         }
 
     }
-    public function delete()
+    public function delete($id)
     {
         if(!$_SESSION['admin']){
             return false;
         }
-        $delete = array('id' => $this->input->get('id'));
+        $delete = array('id' => $id);
         $this->load->model('service_model');
         $this->service_model->deleteServices($delete);
         $this->load->model('filters_services_model');
-        $this->filters_services_model->deleteServices($this->input->get('id'));
+        $this->filters_services_model->deleteFiltersServices(array('services_ids'=>$id));
         header('Location: /admin');
     }
 
