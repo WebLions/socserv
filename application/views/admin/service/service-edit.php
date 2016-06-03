@@ -17,7 +17,7 @@
                 <label for="other">Адреса</label>
                 <input name="adres" class="form-control" id="adres">
             </div>
-            <button type="submit" class="btn btn-default addcontragent">Добавить</button>
+            <button type="submit" class="btn btn-primary">Додати</button>
             <div class="row category-list">
                 <div class="col-lg-6 left-cat">
                     <?php
@@ -31,6 +31,7 @@
                                 </div>
                                 <br>
                                 <select class="btn btn-primary cat-select">
+                                    <option>Оберіть категорію служби</option>
                                     <?php foreach($cat['values'] as $val): ?>
                                         <option><?=$val['name'];?></option>
                                     <?php endforeach;?>
@@ -51,6 +52,7 @@
                                 </div>
                                 <br>
                                 <select class="btn btn-primary cat-select">
+                                    <option>Оберіть категорію служби</option>
                                     <?php foreach($cat['values'] as $val): ?>
                                         <option><?=$val['name'];?></option>
                                     <?php endforeach;?>
