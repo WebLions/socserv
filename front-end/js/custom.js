@@ -9,9 +9,11 @@ $(document).ready(function(){
         });
     $(function() {
         $('.filter-category').click(function(){
-             $('.filter-category-item').each(function(i,el) {
+            var open = $(this).parent().hasClass('open');
+            $('.filter-category-item').each(function(i,el) {
                     $(el).removeClass('open')
                 });
+            if(!open)
             $(this).parent().toggleClass('open');
         })
     })
