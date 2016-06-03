@@ -31,7 +31,7 @@
             filterhtml = '';
             $('.filter_box').each(function(i,el){
                 if($(el).prop('checked')) {
-                    filterhtml += '<span class="label label-primary">'+$(el).attr('label_text')+'</span>';
+                    filterhtml += '<span class="label label-primary">'+$(el).attr('label_text')+'</span> ';
                     any = true;
                     if( elements[$(el).attr('cat_id')]===undefined)
                         elements[$(el).attr('cat_id')] = new Array();
