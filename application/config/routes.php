@@ -57,13 +57,15 @@ $route['admin/service/add'] = 'service/add';
 $route['admin/service/edit/(:num)'] = 'service/edit/$1';
 $route['admin/service/delete/(:num)'] = 'service/delete/$1';
 
+$route['admin/filter/'] = 'filters/addFilters';
 $route['admin/filter/add'] = 'filters/addFilters';
 $route['admin/filter/edit'] = 'filters/editFilter';
 $route['admin/filter/delete'] = 'filters/deleteFilters';
 
-$route['admin/category/add'] = 'category/addCategory';
-$route['admin/category/edit'] = 'category/editCategory';
-$route['admin/category/delete'] = 'category/deleteCategory';
+$route['admin/category'] = 'categories';
+$route['admin/category/add'] = 'categories/addCategory';
+$route['admin/category/edit/(:num)'] = 'categories/editCategory/$1';
+$route['admin/category/delete/(:num)'] = 'categories/deleteCategory/$1';
 
 
 

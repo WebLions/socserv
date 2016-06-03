@@ -3,19 +3,19 @@
     <form role="form" method="post" action="/service/add_post">
     <div class="form-group">
         <label for="name">Назва</label>
-        <input name="name" type="text" class="form-control" id="name">
+        <input required name="name" type="text" class="form-control" id="name">
     </div>
     <div class="form-group">
         <label for="contact">Опис</label>
-        <input name="description" class="form-control" id="title">
+        <input required name="description" class="form-control" id="title">
     </div>
     <div class="form-group">
         <label for="other">Телефон</label>
-        <input name="phone" class="form-control" id="phone">
+        <input required name="phone" class="form-control" id="phone">
     </div>
     <div class="form-group">
         <label for="other">Адреса</label>
-        <input name="adres" class="form-control" id="adres">
+        <input required name="adres" class="form-control" id="adres">
     </div>
         <input type="text" hidden name="coordinates" id="search_coords">
         <input type="text" hidden name="disctrict" id="search_region">
@@ -30,7 +30,7 @@
                         </div>
                         <br>
                         <select name="id_filter[]" class="btn btn-primary cat-select">
-                            <option>Не выбрано</option>
+                            <option>Оберіть категорію служби</option>
                             <?php foreach($cat['values'] as $val): ?>
                                 <option value="<?=$val['id'];?>"><?=$val['name'];?></option>
                             <?php endforeach;?>

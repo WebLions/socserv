@@ -22,6 +22,10 @@ class Categories_model extends CI_Model {
             $where = (array)$params['ids'];
             $this->db->where_in('id', $where);
         }
+        if (!empty($params['no_disctrict'])) {
+            $where = array(2);
+            $this->db->where_not_in('id', $where);
+        }
         $result = $this->db->get('categories');
         if (!empty($result)) {
             $return = $result->result_array();
@@ -63,7 +67,7 @@ class Categories_model extends CI_Model {
             return FALSE;
         }
         $id = (int) $params['id'];
-        $result = $this->getFilters(array('ids' => $id));
+        $result = $this->getCategories(array('ids' => $id));
         if (empty($result)) {
             return FALSE;
         }

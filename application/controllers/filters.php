@@ -6,7 +6,12 @@ class Filters extends CI_Controller {
     public function __construct() {
         parent::__construct();
     }
-
+    public function index(){
+        $this->load->model('filters_model');
+        $categories = $this->filters_model->getFilters();
+        $this->data['filters'] = $categories;
+        $this->load->view('admin/filters', $this->data);
+    }
     /**
      * Выборка данных для добавления фильтра
      */
