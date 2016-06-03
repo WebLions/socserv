@@ -26,7 +26,6 @@
                 <i class="glyphicon glyphicon-chevron-down "></i>
             </div>
             <div class="filter-content">
-                <?php $rel = json_decode($relation); ?>
                 <?php foreach($cat['values'] as $val): ?>
                     <div class="btn-group" data-toggle="buttons">
                         <div class="btn btn-primary">
