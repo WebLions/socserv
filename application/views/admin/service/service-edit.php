@@ -34,6 +34,7 @@
                     </div>
                 </div>
             <?php endforeach; ?>
+
         </form>
     </div>
 </div>
