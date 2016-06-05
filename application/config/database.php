@@ -76,9 +76,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
+	'hostname' => 'limiard.mysql.ukraine.com.ua',
+	'username' => 'limiard_socserv',
+	'password' => 'teqcwe7g',
 	'database' => 'limiard_socserv',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

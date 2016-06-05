@@ -29,7 +29,7 @@
     <nav>
         <ul class="pagination">
             <?php for ($i = 1; $i <= $page_count; $i++) {?>
-            <li><a href="/admin/category?page=<?php echo $i;?>" <?php echo ($i == $page + 1? 'disabled' : '')?>><?php echo $i;?></a></li>
+            <li><a href="/admin/category?page=<?php echo $i;?>" <?php echo ($i == $page + 1? 'style="pointer-events: none;cursor: default;"' : '')?>><?php echo $i;?></a></li>
             <?php } ?>
         </ul>
     </nav>

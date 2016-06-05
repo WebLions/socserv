@@ -99,13 +99,4 @@ class Categories_model extends CI_Model {
         return $result;
     }
 
-    /**
-     * Считает количество записей в таблице
-     *
-     * @return array
-     */
-    public function getCountCategories() {
-        $result = $this->db->count_all('categories');
-        return $result;
-    }
 }

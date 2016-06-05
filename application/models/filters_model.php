@@ -18,6 +18,10 @@ class Filters_model extends CI_Model {
      */
     public function getFilters($params = array()) {
         $return = array();
+        if (!empty($params['no_district'])) {
+            $where = array(2);
+            $this->db->where_not_in('id_category', $where);
+        }
         if (!empty($params['category_ids'])) {
             $where = (array)$params['category_ids'];
             $this->db->where_in('id_category', $where);

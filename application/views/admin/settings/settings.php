@@ -12,11 +12,8 @@
             <input type="text" class="form-control" id="new-pass">
         </div>
         <div class="btn-group">
-            <div class="btn btn-primary">
-                <input type="submit" value="Установить">
-            </div>
+                <input class="btn btn-primary" type="submit" value="Встановити">
         </div>
-
         </form>
     </div>
 </div>
