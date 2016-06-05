@@ -25,4 +25,5 @@
             <a href="/admin/filter/add">Додати фільтр </a><i class="glyphicon glyphicon-plus"></i>
         </div>
     </div>
+
 </div>
