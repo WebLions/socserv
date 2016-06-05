@@ -12,8 +12,21 @@ class Categories extends CI_Controller {
         if(!$_SESSION['admin']){
             redirect('/', 'refresh');
         }
+        $get = $this->input->get();
+        $page = 1;
+        if (isset($get['page']) && !empty($get['page']) && $get['page'] != 0) {
+            $page = (int) $get['page'];
+        }
         $this->load->model('categories_model');
-        $v['categories'] = $this->categories_model->getCategories(array('no_district' => true));
+        $params = array(
+            'page' => $page,
+            'no_district' => TRUE,
+        );
+        $v['categories'] = $this->categories_model->getCategories($params);
+        $v['categories'] = array_filter(array_merge(array(0), $v['categories']));
+        $page_count = $this->categories_model->getCountCategories($params);
+        $v['page'] = ($page - 1) * 10;
+        $v['page_count'] = ceil($page_count / 10);
         $this->load->view('admin/header', $v);
         $this->load->view('admin/category/category');
         $this->load->view('admin/footer');
