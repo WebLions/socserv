@@ -47,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <a href="/admin/settings">Налаштування</span></a>
                 </li>
                 <li>
-                    <a href="admin/logout">Вихід</span></a>
+                    <a href="/admin/logout">Вихід</span></a>
                 </li>
             </ul>
         </div>
