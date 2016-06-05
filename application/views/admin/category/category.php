@@ -12,9 +12,9 @@
                 <th style="width:80%;text-align:center;">Найменування категорій</th>
                 <th style="width:2%;text-align:center;">Функції</th>
             </tr>
-            <?php foreach($categories as $key => $val) {?>
+            <?php $i = $page; foreach($categories as $key => $val) { $i++?>
                 <tr>
-                    <td><?php echo $key?></td>
+                    <td><?php echo $i?></td>
                     <td><?php echo $val['name']?></td>
                     <td style="text-align: center">
                         <div class="btn-group">
@@ -26,4 +26,11 @@
             <?php } ?>
         </table>
     </div>
+    <nav>
+        <ul class="pagination">
+            <?php for ($i = 1; $i <= $page_count; $i++) {?>
+            <li><a href="/admin/category?page=<?php echo $i;?>" <?php echo ($i == $page + 1? 'disabled' : '')?>><?php echo $i;?></a></li>
+            <?php } ?>
+        </ul>
+    </nav>
 </div>
