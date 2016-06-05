@@ -13,7 +13,7 @@ class Categories extends CI_Controller {
             redirect('/', 'refresh');
         }
         $this->load->model('categories_model');
-        $v['categories'] = $this->categories_model->getCategories();
+        $v['categories'] = $this->categories_model->getCategories(array('no_district' => true));
         $this->load->view('admin/header', $v);
         $this->load->view('admin/category/category');
         $this->load->view('admin/footer');
