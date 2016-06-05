@@ -22,7 +22,7 @@ class Categories_model extends CI_Model {
             $where = (array)$params['ids'];
             $this->db->where_in('id', $where);
         }
-        if (!empty($params['no_disctrict'])) {
+        if (!empty($params['no_district'])) {
             $where = array(2);
             $this->db->where_not_in('id', $where);
         }
@@ -32,7 +32,6 @@ class Categories_model extends CI_Model {
         }
         return $return;
     }
-
     /**
      * Добавляет новую категорию
      *

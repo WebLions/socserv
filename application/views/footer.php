@@ -106,10 +106,15 @@
 
         map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(document.getElementById('marker_desc'));
         var input = (document.getElementById('search_address'));
+        var defaultBounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(46.60042199999999, 30.61168491),
+            new google.maps.LatLng(46.319522, 30.811890));
         var options = {
+            bounds : defaultBounds,
             componentRestrictions: {country: 'ua'}
         };
         var autocomplete = new google.maps.places.Autocomplete(input,options);
+        autocomplete.bindTo('bounds', map);
         google.maps.event.addListener(autocomplete, 'place_changed', function() {
             var place = autocomplete.getPlace();
 
