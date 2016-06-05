@@ -14,9 +14,6 @@ class Filters extends CI_Controller {
         foreach($categories as $value){
             $categories['category'] = $this->categories_model->getCategories(array('ids' => $value['id_category']));
         }
-        echo '<pre>';
-        print_r($categories);
-
         $this->data['filters'] = $categories;
         $this->load->view('admin/header');
         $this->load->view('admin/filters/filters', $this->data);
