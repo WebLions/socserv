@@ -14,9 +14,10 @@
                 <th style="width:2%;text-align:center;">Функції</th>
             </tr>
             <?php
+            $i = 1;
             foreach($filters as $filt):?>
                 <tr>
-                    <td></td>
+                    <td><?echo $i++?></td>
                     <td><?=$filt['name']?></td>
                     <td><?=$filt['category']?></td>
                     <td>

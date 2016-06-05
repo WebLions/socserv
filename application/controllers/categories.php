@@ -22,6 +22,7 @@ class Categories extends CI_Controller {
             'page' => $page,
             'no_district' => TRUE,
         );
+
         $v['categories'] = $this->categories_model->getCategories($params);
         $page_count = $this->categories_model->getCountCategories($params);
         $v['page'] = ($page - 1) * 10;
