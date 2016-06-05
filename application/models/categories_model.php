@@ -98,6 +98,5 @@ class Categories_model extends CI_Model {
         $result = $this->db->delete('categories');
         return $result;
     }
-
 }
 
