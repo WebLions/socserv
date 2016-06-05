@@ -18,6 +18,7 @@ class Categories_model extends CI_Model {
      */
     public function getCategories($params = array())
     {
+        $return = array();
         if (!empty($params['ids'])) {
             $where = (array)$params['ids'];
             $this->db->where_in('id', $where);
@@ -26,9 +27,15 @@ class Categories_model extends CI_Model {
             $where = array(2);
             $this->db->where_not_in('id', $where);
         }
+        if (!empty($params['page']) && $params['page'] != 0) {
+            $page = (int) $params['page'];
+            $limit = ($page - 1) * 10;
+            $this->db->limit(10, $limit);
+        }
         $result = $this->db->get('categories');
+        $result = $result->result_array();
         if (!empty($result)) {
-            $return = $result->result_array();
+            $return = $result;
         }
         return $return;
     }
@@ -92,4 +99,13 @@ class Categories_model extends CI_Model {
         return $result;
     }
 
+    /**
+     * Считает количество записей в таблице
+     *
+     * @return array
+     */
+    public function getCountCategories() {
+        $result = $this->db->count_all('categories');
+        return $result;
+    }
 }
