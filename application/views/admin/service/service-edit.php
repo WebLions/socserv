@@ -19,7 +19,7 @@
             </div>
             <input type="number" hidden name="id" <?=isset($service) ? "value='".$service[0]['id']."' " : "";?>>
             <input type="text" hidden name="coordinates" <?=isset($service) ? "value='".$service[0]['coordinates']."' " : "";?> id="search_coords">
-            <input type="text" hidden name="disctrict" id="search_region">
+            <input type="text" hidden name="disctrict" <?=isset($disctrict)? "value='".$disctrict."'" : ""; ?> id="search_region">
             <input type="text" hidden name="adres"  <?=isset($service) ? "value='".$service[0]['adres']."' " : "";?> id="search_addr">
             <button type="submit" class="btn btn-primary">Редагувати</button>
             <div class="row category-list">
@@ -31,8 +31,8 @@
                                     <p><?=$cat['name'];?></p>
                                 </div>
                                 <br>
-                                <select class="btn btn-primary cat-select">
-                                    <option>Оберіть категорію служби</option>
+                                <select name="id_filter[]" class="btn btn-primary cat-select">
+                                    <option value="">Оберіть категорію служби</option>
                                     <?php foreach($cat['values'] as $val): ?>
                                         <option value="<?=$val['id'];?>" <?=(in_array($val['id'],$selected)) ? "selected" : ""; ?>><?=$val['name'];?></option>
                                     <?php endforeach;?>
