@@ -28,7 +28,18 @@
     var any = false;
     var filterhtml = '';
     markers = {};
+    $(window).resize(function(){
+        var height = document.documentElement.clientHeight - 151;
+        console.log(height);
+        $('#map').css('min-height',height+'px');
+        $('#map').css('height',height+'px');
+        initMap();
+    })
     $(document).ready(function(){
+        var height = document.documentElement.clientHeight - 151;
+        console.log(height);
+        $('#map').css('min-height',height+'px');
+        $('#map').css('height',height+'px');
         $('.filter_box').change(function(){
             console.clear();
             any = false;
