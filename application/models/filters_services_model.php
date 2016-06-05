@@ -26,7 +26,7 @@ class Filters_services_model extends CI_Model {
             $this->db->where_in('id_services', $id);
         }
         $result = $this->db->get('filters_services');
-        return $result;
+        return $result->result_array();
     }
 
     /**

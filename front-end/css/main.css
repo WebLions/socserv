@@ -40,7 +40,6 @@ body {
 .marker-desc{
     display:none;
     width:50%;
-    margin-left:-5%;
     height: 150px;
     margin-top: -300px;
     margin-bottom:50px;

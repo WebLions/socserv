@@ -104,7 +104,7 @@
             draggable: true
         });
 
-        map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(document.getElementById('marker_desc'));
+        map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(document.getElementById('marker_desc'));
         var input = (document.getElementById('search_address'));
         var defaultBounds = new google.maps.LatLngBounds(
             new google.maps.LatLng(46.60042199999999, 30.61168491),
