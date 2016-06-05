@@ -86,24 +86,38 @@ class Service extends CI_Controller {
         //Загружаем категории
         $this->load->model('categories_model');
         $this->load->model('filters_model');
-        $this->data['categories'] = $this->categories_model->getCategories(array('no_district' => true));
+        $this->data['categories'] = $this->categories_model->getCategories();
+        $districts = array();
         foreach ($this->data['categories'] as $key=>$value) {
             $params['category_ids'] = $value['id'];
+            if($value['id']!=2){
             $this->data['categories'][$key]['values'] = $this->filters_model->getFilters($params);
+            }else{
+                unset($this->data['categories'][$key]);
+                $districts = $this->filters_model->getFilters($params);
+            }
         }
 
         //Выбираем какая категория принадлежит службе
         $this->load->model('filters_services_model');
         $par = array('services_ids' => $this->data['service'][0]['id']);
         $this->data['selected'] = $this->filters_services_model->getFiltersServices($par);
+        $cats = array();
+        foreach($districts as $val){
+            $cats[$val['id']] = $val['name'];
+        }
         $filters = array();
+        $cat ='';
         foreach($this->data['selected'] as $val){
             $filters[] = $val['id_filter'];
+            if(isset($cats[$val['id_filter']])) $cat = $cats[$val['id_filter']];
         }
+        $this->data['disctrict'] = $cat;
         $this->data['selected'] = $filters;
         $this->load->view('admin/header');
         $this->load->view('admin/service/service-edit', $this->data);
         $this->load->view('admin/footer');
+
     }
     public function edit_post(){
         if(!$_SESSION['admin']){
@@ -148,12 +162,12 @@ class Service extends CI_Controller {
             foreach($post['id_filter'] as $value)
             {
                 $array = array('id_services' =>$post['id'], 'id_filter' => $value);
-                $relations['data'][] = $array;
+                $relations[] = $array;
             }
-            $relations['services_ids'] = $post['id'];
-            $this->filters_services_model->updateFiltersServices($relations);
+            $this->filters_services_model->deleteFiltersServices(array('services_ids'=>$post['id']));
+            $this->filters_services_model->insertFiltersServices($relations);
         }
-
+        header('Location: /admin');
     }
     public function delete($id)
     {
