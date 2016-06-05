@@ -59,8 +59,8 @@ $route['admin/service/delete/(:num)'] = 'service/delete/$1';
 
 $route['admin/filter'] = 'filters';
 $route['admin/filter/add'] = 'filters/addFilters';
-$route['admin/filter/edit'] = 'filters/editFilter';
-$route['admin/filter/delete'] = 'filters/deleteFilters';
+$route['admin/filter/edit/(:num)'] = 'filters/editFilter/$1';
+$route['admin/filter/delete/(:num)'] = 'filters/deleteFilters/$1';
 
 $route['admin/category'] = 'categories';
 $route['admin/category/add'] = 'categories/addCategory';

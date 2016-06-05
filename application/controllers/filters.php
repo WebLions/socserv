@@ -35,18 +35,19 @@ class Filters extends CI_Controller {
     /**
      * Выборка данных для редактирования фильтра
      */
-    public function editFilter() {
-        $get = $this->input->get();
-        if (empty($get['id'])) {
+    public function editFilter($id) {
+        if (empty($id)) {
             redirect('/404', 'refresh');
         }
-        $id = $get['id'];
         if (!is_integer($id)) {
             $id = (int) $id;
         }
         $this->load->model('filters_model');
+        $this->load->model('categories_model');
         $filter = $this->filters_model->getFilters(array('ids' => $id , 'no_district' => true));
         $this->data['filter'] = $filter;
+        $categories = $this->categories_model->getCategories(array('no_district' => true));
+        $this->data['categories'] = $categories;
         $this->load->view('admin/header');
         $this->load->view('admin/filters/filter-edit', $this->data);
         $this->load->view('admin/footer');
@@ -70,6 +71,7 @@ class Filters extends CI_Controller {
         if (!$q) {
             return FALSE;
         }
+        header("Location: /admin/filter");
         return TRUE;
     }
 
@@ -93,25 +95,27 @@ class Filters extends CI_Controller {
         if (!$q) {
             return FALSE;
         }
+        header("Location: /admin/filter");
         return TRUE;
     }
 
     /**
      * Удаляет данные фильтров
      */
-    public function deleteFilters() {
-        $get = $this->input->get();
-        if (empty($get)) {
+    public function deleteFilters($id) {
+        if (empty($id)) {
             return FALSE;
         }
         $this->load->model('filters_model');
         $params = array(
-            'filter_id' => $get['id'],
+            'id' => $id,
         );
         $q = $this->filters_model->deleteFilters($params);
+
         if (!$q) {
             return FALSE;
         }
+        header("Location: /admin/filter");
         return TRUE;
     }
 }
