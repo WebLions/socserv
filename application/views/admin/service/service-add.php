@@ -20,7 +20,7 @@
         <input type="text" hidden name="coordinates" id="search_coords">
         <input type="text" hidden name="disctrict" id="search_region">
         <input type="text" hidden name="adres" id="search_addr">
-    <button type="submit" class="btn btn-default addcontragent">Добавить</button>
+    <button type="submit" class="btn btn-primary">Додати</button>
         <div class="row category-list">
                 <?php foreach($categories as $cat):?>
                     <div class="col-lg-6 left-cat">
