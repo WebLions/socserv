@@ -107,12 +107,7 @@
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 46.4846, lng: 30.7326},
-            zoom: 12,
-            scrollwheel: false,
-            navigationControl: false,
-            mapTypeControl: false,
-            scaleControl: false,
-            draggable: true
+            zoom: 12
         });
 
         map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(document.getElementById('marker_desc'));
