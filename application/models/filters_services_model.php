@@ -87,18 +87,18 @@ class Filters_services_model extends CI_Model {
      * @return array
      */
     public function deleteFiltersServices($params = array()) {
-        if (empty($params['id'])) {
-            $id = (int) $params['id'];
-            $this->db->where('id', $id);
+        if (!empty($params['id'])) {
+            $id = (array) $params['id'];
+            $this->db->where_in('id', $id);
         }
         if (!empty($params['filter_ids']))
         {
-            $id = (array) $params['id_filter'];
+            $id = (array) $params['filter_ids'];
             $this->db->where_in('id_filter', $id);
         }
         if (!empty($params['services_ids']))
         {
-            $id = (array) $params['id_services'];
+            $id = (array) $params['services_ids'];
             $this->db->where_in('id_services', $id);
         }
         $result = $this->db->delete('filters_services');

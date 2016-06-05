@@ -3,9 +3,6 @@
             <div class=" search-block">
                 <div class="input-group">
                     <input type="text" class="form-control" id="search_address" placeholder="Что ищем?">
-          <span class="input-group-btn">
-            <button class="btn btn-default"  id="search_btn" type="button">Поиск</button>
-          </span>
                 </div>
             </div>
             <?php
@@ -20,7 +17,7 @@
                         <?php foreach($cat['values'] as $val): ?>
                             <div class="btn-group" data-toggle="buttons">
                                 <div class="btn btn-primary">
-                                    <input type="checkbox" id="filter<?=$val['id'];?>" label_text="<?=$val['name'];?>" filter_id="<?=$val['id'];?>" cat_id="<?=$cat['id'];?>" class="filter_box"/>
+                                    <input type="checkbox" id="filter<?=$val['id'];?>" label_text="<?=$cat['name'].' : '.$val['name'];?>"  filter_id="<?=$val['id'];?>" cat_id="<?=$cat['id'];?>" class="filter_box"/>
                                     <span class="glyphicon glyphicon-ok"></span>
                                 </div>
                                 <label for="filter<?=$cat['id'];?>_val<?=$val['id'];?>"><?=$val['name'];?></label>

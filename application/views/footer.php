@@ -41,7 +41,7 @@
                 }
             });
             if(filterhtml.length>0){
-                $('#selected_filters').html('<span>Выбраные фильтры:</span>'+filterhtml);
+                $('#selected_filters').html('<span>Выбраные фильтры:<br></span>'+filterhtml);
             }
             /* МАГИЯ НЕ ТРОГАТЬ */
             var markers_index = new Array();
@@ -101,7 +101,10 @@
 
         map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(document.getElementById('marker_desc'));
         var input = (document.getElementById('search_address'));
-        var autocomplete = new google.maps.places.Autocomplete(input);
+        var options = {
+            componentRestrictions: {country: 'ua'}
+        };
+        var autocomplete = new google.maps.places.Autocomplete(input,options);
         google.maps.event.addListener(autocomplete, 'place_changed', function() {
             var place = autocomplete.getPlace();
 

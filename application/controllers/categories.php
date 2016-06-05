@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+@session_start();
 
 class Categories extends CI_Controller {
 
@@ -7,30 +8,78 @@ class Categories extends CI_Controller {
         parent::__construct();
     }
 
+    public function index() {
+        if(!$_SESSION['admin']){
+            redirect('/', 'refresh');
+        }
+        $this->load->model('categories_model');
+        $v['categories'] = $this->categories_model->getCategories();
+        $this->load->view('admin/header', $v);
+        $this->load->view('admin/category/category');
+        $this->load->view('admin/footer');
+    }
     /**
      * Выборка данных для добавления категории
      */
     public function addCategory() {
-        $this->load->view('admin/category');
+        if(!$_SESSION['admin']){
+            redirect('/', 'refresh');
+        }
+        $this->load->library('form_validation');
+        $this->load->model('categories_model');
+        $this->form_validation->set_rules('name', 'Назва', 'trim|required');
+
+        if ($this->form_validation->run() == TRUE) {
+            $params = array(
+                'name' => $this->input->post('name'),
+            );
+            $this->categories_model->insertCategories($params);
+            redirect('/admin/category', 'refresh');
+        } else {
+            $this->load->view('admin/header');
+            $this->load->view('admin/category/category-add');
+            $this->load->view('admin/footer');
+        }
     }
 
     /**
      * Выборка данных для редактирования категории
      */
-    public function editCategory() {
-        $get = $this->input->get();
-        if (empty($get['id'])) {
-            redirect('/404', 'refresh');
+    public function editCategory($id = 0) {
+        if(!$_SESSION['admin']){
+            redirect('/', 'refresh');
         }
-        $id = $get['id'] = 2;
-        if (!is_integer($id)) {
-            $id = (int) $id;
+        if (!isset($id) && empty($id)) {
+            redirect('/', 'refresh');
         }
+        $id = (int) $id;
+        $this->load->library('form_validation');
         $this->load->model('categories_model');
-        $category = $this->categories_model->getCategories(array('ids' => $id));
-        $category = reset($category);
-        $this->data['category_name'] = $category['name'];
-        $this->load->view('admin/filters', $this->data);
+        $this->form_validation->set_rules('name', 'Назва', 'trim|required');
+
+        if ($this->form_validation->run() == TRUE) {
+            $params = array(
+                'id' => $id,
+                'data' => array(
+                    'name' => $this->input->post('name'),
+                ),
+            );
+            $this->categories_model->updateCategories($params);
+            redirect('/admin/category', 'refresh');
+        } else {
+            $q = $this->categories_model->getCategories(array('ids' => $id));
+            $v = array(
+                'name' => '',
+                'id' => $id,
+            );
+            if (!empty($q)) {
+                $q = reset($q);
+                $v['name'] = $q['name'];
+            }
+            $this->load->view('admin/header', $v);
+            $this->load->view('admin/category/category-edit');
+            $this->load->view('admin/footer');
+        }
     }
 
     /**
@@ -80,23 +129,23 @@ class Categories extends CI_Controller {
     /**
      * Удаляет данные категории и их связи
      */
-    public function deleteCategory() {
-        $post = $this->input->post();
-        if (empty($post)) {
+    public function deleteCategory($id = 0) {
+        $id = (int) $id;
+        if (!isset($id) && empty($id)) {
             return FALSE;
         }
         $this->load->model('categories_model');
         $this->load->model('filters_model');
         $this->load->model('filters_services_model');
         $params = array(
-            'id' => $post['id'],
+            'ids' => $id,
         );
-        $q = $this->category_model->deleteCategories($params);
+        $q = $this->categories_model->deleteCategories($params);
         if ($q == FALSE) {
-            return FALSE;
+            redirect('/admin/category', 'refresh');
         }
         $params = array(
-            'category_ids' => $post['id'],
+            'category_ids' => $id,
         );
         $filters = $this->filters_model->getFilters($params);
         $filters_ids = array();
@@ -104,22 +153,22 @@ class Categories extends CI_Controller {
             $filters_ids[] = $filter['id_category'];    
         }
         if (empty($filters_ids)) {
-            return TRUE;
+            redirect('/admin/category', 'refresh');
         }
         $params = array(
-            'id' => $post['id'],
+            'id' => $id,
         );
         $q = $this->filters_model->deleteFilters($params);
         if ($q == FALSE) {
-            return FALSE;
+            redirect('/admin/category', 'refresh');
         }
         $params = array(
             'id' => $filters_ids,
         );
         $q = $this->filters_services_model->deleteFiltersServices($params);
         if ($q == FALSE) {
-            return FALSE;
+            redirect('/admin/category', 'refresh');
         }
-        return TRUE;
+        redirect('/admin/category', 'refresh');
     }
 }

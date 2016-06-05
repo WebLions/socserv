@@ -13,6 +13,7 @@ class Service_model extends CI_Model {
      */
     public function getServices($params = array())
     {
+
         $return = array();
         if (!empty($params['ids'])) {
             $where = (array)$params['ids'];

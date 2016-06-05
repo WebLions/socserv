@@ -19,8 +19,8 @@
                 <td><?=$serv['phone']?></td>
                 <td>
                     <div class="btn-group">
-                        <a class="btn btn-xs btn-success editClient" href="admin/service/edit&id<?=$serv['id']?>"><i class="glyphicon glyphicon-pencil"></i></a>
-                        <a class="btn btn-xs btn-danger deleteClient" href="admin/service/delete&id<?=$serv['id']?>"><i class="glyphicon glyphicon-trash"></i></a>
+                        <a class="btn btn-xs btn-success editClient" href="/admin/service/edit/<?=$serv['id']?>"><i class="glyphicon glyphicon-pencil"></i></a>
+                        <a class="btn btn-xs btn-danger deleteClient" href="/admin/service/delete/<?=$serv['id']?>"><i class="glyphicon glyphicon-trash"></i></a>
                     </div>
                 </td>
             </tr>
@@ -29,7 +29,7 @@
 </div>
 <div class="add-block">
     <div class="btn btn-primary">
-        <a href="admin/service/add">Додати службу </a><i class="glyphicon glyphicon-plus"></i>
+        <a href="/admin/service/add">Додати службу </a><i class="glyphicon glyphicon-plus"></i>
     </div>
 </div>
 </div>

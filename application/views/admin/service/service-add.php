@@ -1,45 +1,76 @@
 <div class="col-lg-10">
     <div class="admin-content">
-    <form role="form" method="post">
+    <form role="form" method="post" action="/service/add_post">
     <div class="form-group">
         <label for="name">Назва</label>
-        <input name="name" type="text" class="form-control" id="name">
+        <input required name="name" type="text" class="form-control" id="name">
     </div>
     <div class="form-group">
         <label for="contact">Опис</label>
-        <input name="contact" class="form-control" id="contact">
+        <input required name="description" class="form-control" id="title">
     </div>
     <div class="form-group">
         <label for="other">Телефон</label>
-        <input name="other" class="form-control" id="other">
+        <input required name="phone" class="form-control" id="phone">
     </div>
     <div class="form-group">
         <label for="other">Адреса</label>
-        <input name="other" class="form-control" id="other">
+        <input required name="adres" class="form-control" id="adres">
     </div>
+        <input type="text" hidden name="coordinates" id="search_coords">
+        <input type="text" hidden name="disctrict" id="search_region">
+        <input type="text" hidden name="adres" id="search_addr">
     <button type="submit" class="btn btn-default addcontragent">Добавить</button>
-    <?php
-    foreach($categories as $cat):?>
-        <div class="filter-category-item" id="<?=$cat['id'];?>">
-            <div class="filter-category">
-                <a><?=$cat['name'];?></a>
-                <i class="glyphicon glyphicon-chevron-down "></i>
-            </div>
-            <div class="filter-content">
-                <?php $rel = json_decode($relation); ?>
-                <?php foreach($cat['values'] as $val): ?>
-                    <div class="btn-group" data-toggle="buttons">
-                        <div class="btn btn-primary">
-                            <input type="checkbox" id="filter<?=$val['id'];?>" label_text="<?=$val['name'];?>" filter_id="<?=$val['id'];?>" cat_id="<?=$cat['id'];?>" class="filter_box"/>
-                            <span class="glyphicon glyphicon-ok"></span>
+        <div class="row category-list">
+                <?php foreach($categories as $cat):?>
+                    <div class="col-lg-6 left-cat">
+                    <div class="filter-category-item" id="<?=$cat['id'];?>">
+                        <div class="filter-category">
+                            <p><?=$cat['name'];?></p>
                         </div>
-                        <label for="filter<?=$cat['id'];?>_val<?=$val['id'];?>"><?=$val['name'];?></label>
-                        <span class="label">( <?=isset($rel->{$val['id']})? count($rel->{$val['id']}):0;?> )</span>
+                        <br>
+                        <select name="id_filter[]" class="btn btn-primary cat-select">
+                            <option>Оберіть категорію служби</option>
+                            <?php foreach($cat['values'] as $val): ?>
+                                <option value="<?=$val['id'];?>"><?=$val['name'];?></option>
+                            <?php endforeach;?>
+                        </select>
+
                     </div>
-                    <br>
-                <?php endforeach;?>
             </div>
+                <?php endforeach; ?>
+
         </div>
-    <?php endforeach; ?>
 </form>
     </div>
+</div>
+
+    <script type="text/javascript">
+        function initMap() {
+            var input = (document.getElementById('adres'));
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                var place = autocomplete.getPlace();
+                if (!place.geometry) {
+                    return;
+                }
+                $('#search_coords').val(JSON.stringify(place.geometry.location));
+                var addr1 = '';
+                var addr2 = '';
+                $.each(place.address_components,function(index,item){
+                    type = false;
+                    $.each(item.types,function(i,e){
+                        if(e=="sublocality") type=true;
+                        if(e=="route") addr1 = item.long_name;
+                        if(e=="street_number") addr2 = item.long_name;
+                    });
+                    if(type){
+                        $('#search_region').val(item.long_name);
+                    }
+                    $('#search_addr').val(addr1+' '+addr2);
+                })
+                console.log(place);
+            });
+        }
+    </script>
+    <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA4wG__6Tde9l83sGXz4DdT-KwjrKTF-lQ&callback=initMap&libraries=places'></script>

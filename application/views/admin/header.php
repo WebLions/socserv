@@ -30,25 +30,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 Адміністративна панель
             </div>
         </div>
-
     </div>
     <div class="row">
         <div class="col-lg-2">
             <ul class="nav in" id="side-menu">
                 <li>
-                    <a href="#">Служби</a>
+                    <a href="/admin">Служби</a>
                 </li>
                 <li>
-                    <a href="tables.html">Фільтри</a>
+                    <a href="admin/filters">Фільтри</a>
                 </li>
                 <li>
-                    <a href="forms.html">Категорії фільтрів</a>
+                    <a href="/admin/category">Категорії фільтрів</a>
                 </li>
                 <li>
-                    <a href="#">Налаштування</span></a>
+                    <a href="admin/settings">Налаштування</span></a>
                 </li>
                 <li>
-                    <a href="#">Вихід</span></a>
+                    <a href="admin/logout">Вихід</span></a>
                 </li>
             </ul>
         </div>
