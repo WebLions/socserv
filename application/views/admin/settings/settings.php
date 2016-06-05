@@ -1,7 +1,22 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Swarge
- * Date: 6/1/2016
- * Time: 10:50 PM
- */
+<div class="col-lg-10">
+    <div class="admin-content">
+        <form action="/admin/change_password" method="post">
+
+
+        <div class="form-group">
+            <label for="usr">Старий пароль:</label>
+            <input type="text" class="form-control" id="pass">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Новий пароль:</label>
+            <input type="text" class="form-control" id="new-pass">
+        </div>
+        <div class="btn-group">
+            <div class="btn btn-primary">
+                <input type="submit" value="Установить">
+            </div>
+        </div>
+
+        </form>
+    </div>
+</div>
