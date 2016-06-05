@@ -11,8 +11,9 @@ class Filters extends CI_Controller {
         $this->load->model('categories_model');
 
         $categories = $this->filters_model->getFilters(array('no_district' => true));
-        foreach($categories as $value){
-            $categories['category'] = $this->categories_model->getCategories(array('ids' => $value['id_category']));
+        foreach($categories as $key =>$value){
+            $category = $this->categories_model->getCategories(array('ids' => $value['id_category']));
+            $categories[$key]['category'] = $category[0]['name'];
         }
         $this->data['filters'] = $categories;
         $this->load->view('admin/header');
