@@ -1,3 +1,11 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Отступ снизу, по высоте футера */
+    margin-bottom: 70px !important;
+}
 .header{
     background-color: #3a87e3;
     padding: 10px 10px;
@@ -131,10 +139,13 @@
     padding: 15px 0px 15px 0px;
 }
 .footer{
-   height: 70px;
-   background-color: #3a87e3;
-   padding: 10px 10px;
-   text-align: center;
+    position: absolute;
+    width:100%;
+    bottom: 0;
+    height: 70px;
+    background-color: #3a87e3;
+    padding: 10px 10px;
+    text-align: center;
 }
 .soc-footer-login{margin-top:10px;color:#fff;font: 18px Arial;}
 .soc-footer-login a{color:#fff;}
@@ -157,7 +168,7 @@
 .selected-filter{padding-bottom:20px;}
 .admin-content{padding:20px 20px 0px 20px;}
 .add-block{text-align: center;}
-.add-block {padding-bottom:20px;}
+.add-block {padding-bottom:20px;margin-bottom:20px}
 .add-block a{color:#fff;text-decoration:none;}
 .add-block a:hover{color:#fff;text-decoration:none;cursor:pointer}
 

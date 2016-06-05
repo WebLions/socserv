@@ -1,7 +1,5 @@
 <div class="col-lg-10">
     <div class="admin-content">
-
-
         <table class="table table-bordered table-hover" style="width:100%;text-align:center">
             <tr>
                 <th style="width:40%;text-align:center;">Назва фільтру</th>
@@ -27,4 +25,5 @@
             <a href="/admin/filter/add">Додати фільтр </a><i class="glyphicon glyphicon-plus"></i>
         </div>
     </div>
+
 </div>
