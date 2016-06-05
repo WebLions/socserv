@@ -45,20 +45,26 @@ class Service extends CI_Controller {
         );
         $id_service = $this->service_model->insertServices($service);
         if (!empty($post['disctrict'])) {
+            $post['disctrict'] = substr($post['disctrict'],0,strpos($post['disctrict'],' '));
             $this->load->model('filters_model');
             $q = $this->filters_model->getFilters(array('name' => $post['disctrict'], 'category_ids' => 2));
-            if (!empty($q)) {
+            if (empty($q)) {
                 $params = array(
                     'name' => $post['disctrict'],
                     'category_ids' => 2,
                 );
-                $id = $this->filters_model->addFilters(array('name' => $post['disctrict']));
-                $post['id_filter'] = (isset($post['id_filter']) ? array_push($post['id_filter'], $id) : $id);
+                $id = $this->filters_model->insertFilters(array('name' => $post['disctrict'], 'id_category' => 2));
+                if(isset($post['id_filter'])){ array_push($post['id_filter'], $id);}else{$post['id_filter'] = array($id);};
+
+            }else{
+                $id = $q[0]['id'];
+                if(isset($post['id_filter'])){ array_push($post['id_filter'], $id);}else{$post['id_filter'] = array($id);};
             }
         }
         if(isset($post['id_filter'])){
             $this->load->model('filters_services_model');
             $relations = array();
+
             foreach($post['id_filter'] as $value)
             {
                 $array = array('id_services' => $id_service, 'id_filter' => $value);
@@ -89,8 +95,12 @@ class Service extends CI_Controller {
         //Выбираем какая категория принадлежит службе
         $this->load->model('filters_services_model');
         $par = array('services_ids' => $this->data['service'][0]['id']);
-        $this->data['checked'] = $this->filters_services_model->getFiltersServices($par);
-
+        $this->data['selected'] = $this->filters_services_model->getFiltersServices($par);
+        $filters = array();
+        foreach($this->data['selected'] as $val){
+            $filters[] = $val['id_filter'];
+        }
+        $this->data['selected'] = $filters;
         $this->load->view('admin/header');
         $this->load->view('admin/service/service-edit', $this->data);
         $this->load->view('admin/footer');
@@ -115,13 +125,30 @@ class Service extends CI_Controller {
             )
         );
         $this->service_model->updateServices($service);
+        if (!empty($post['disctrict'])) {
+            $post['disctrict'] = substr($post['disctrict'],0,strpos($post['disctrict'],' '));
+            $this->load->model('filters_model');
+            $q = $this->filters_model->getFilters(array('name' => $post['disctrict'], 'category_ids' => 2));
+            if (empty($q)) {
+                $params = array(
+                    'name' => $post['disctrict'],
+                    'category_ids' => 2,
+                );
+                $id = $this->filters_model->insertFilters(array('name' => $post['disctrict'], 'id_category' => 2));
+                if(isset($post['id_filter'])){ array_push($post['id_filter'], $id);}else{$post['id_filter'] = array($id);};
+
+            }else{
+                $id = $q[0]['id'];
+                if(isset($post['id_filter'])){ array_push($post['id_filter'], $id);}else{$post['id_filter'] = array($id);};
+            }
+        }
         if(isset($post['id_filter'])){
             $this->load->model('filters_services_model');
             $relations = array();
             foreach($post['id_filter'] as $value)
             {
                 $array = array('id_services' =>$post['id'], 'id_filter' => $value);
-                $relations['data'] = $array;
+                $relations['data'][] = $array;
             }
             $relations['services_ids'] = $post['id'];
             $this->filters_services_model->updateFiltersServices($relations);

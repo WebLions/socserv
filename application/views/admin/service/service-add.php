@@ -30,7 +30,7 @@
                         </div>
                         <br>
                         <select name="id_filter[]" class="btn btn-primary cat-select">
-                            <option>Оберіть категорію служби</option>
+                            <option value="" selected>Оберіть категорію служби</option>
                             <?php foreach($cat['values'] as $val): ?>
                                 <option value="<?=$val['id'];?>"><?=$val['name'];?></option>
                             <?php endforeach;?>
@@ -60,7 +60,7 @@
                 $.each(place.address_components,function(index,item){
                     type = false;
                     $.each(item.types,function(i,e){
-                        if(e=="sublocality") type=true;
+                        if( (e=="sublocality")||(e=="administrative_area_level_2")) type=true;
                         if(e=="route") addr1 = item.long_name;
                         if(e=="street_number") addr2 = item.long_name;
                     });
