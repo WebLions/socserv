@@ -5,18 +5,7 @@
                 <label for="name">Назва</label>
                 <input name="name" type="text" class="form-control" placeholder="Назва категорії">
             </div>
-            <div class="form-group">
-                <select name="id_filter[]" class="btn btn-primary">
-                    <option></option>
-                    <option value="" selected>Оберіть категорію служби</option>
-                    <?php foreach($cat['values'] as $val): ?>
-                        <option value="<?=$val['id'];?>"><?=$val['name'];?></option>
-                    <?php endforeach;?>
-                </select>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Зберегти</button>
-            </div>
+            <button type="submit" class="btn btn-default addcontragent">Зберегти</button>
         </form>
     </div>
 </div>

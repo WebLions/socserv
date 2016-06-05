@@ -1,9 +1,7 @@
     <div class="row">
         <div class="col-lg-3 side-bar">
             <div class=" search-block">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="search_address" placeholder="Что ищем?">
-                </div>
+                    <input type="text" class="form-control" id="search_address" placeholder="Введіть назву вулиці">
             </div>
             <?php
             foreach($categories as $cat):?>
