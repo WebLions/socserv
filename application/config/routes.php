@@ -55,7 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['admin/service/add'] = 'service/add';
 $route['admin/service/edit/(:num)'] = 'service/edit/$1';
-$route['admin/service/delete'] = 'service/delete';
+$route['admin/service/delete/(:num)'] = 'service/delete/$1';
 
 $route['admin/filter/'] = 'filters/addFilters';
 $route['admin/filter/add'] = 'filters/addFilters';
