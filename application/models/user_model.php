@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_model extends CI_Model
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -21,7 +20,19 @@ class User_model extends CI_Model
            }
            else return false;
        }
-
-
    }
+    public function change_password($data)
+    {
+        if(isset($data['password']) && isset($data['new_password']))
+        {
+            $this->db->where('password', $data['password']);
+            $this->db->where('login', $data['login']);
+            $this->db->where('password', $data['password']);
+            $return = $this->db->get('users');
+            if ($return->result_id->num_rows){
+                return true;
+            }
+            else return false;
+        }
+    }
 }

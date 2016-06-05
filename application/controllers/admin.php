@@ -47,6 +47,21 @@ class Admin extends CI_Controller {
             echo 'Ошибка авторизации';
         }
     }
+    public function settings(){
+        $this->load->view('admin/header');
+        $this->load->view('admin/settings/settings.php');
+        $this->load->view('admin/footer');
+    }
+    public function change_password()
+    {
+        $post = $this->input->post();
+        if (empty($post)) {
+            return false;
+        }
+        $this->load->model('user_model');
+
+    }
+
     public function logout(){
         if(isset($_SESSION['admin']) && $_SESSION['admin'])
         {
