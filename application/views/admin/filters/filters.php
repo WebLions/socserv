@@ -22,8 +22,8 @@
                     <td><?=$filt['category']?></td>
                     <td>
                         <div class="btn-group">
-                            <a class="btn btn-xs btn-success editClient" href="admin/filter/edit&id<?=$filt['id']?>"><i class="glyphicon glyphicon-pencil"></i></a>
-                            <a class="btn btn-xs btn-danger deleteClient" href="admin/filter/delete&id<?=$filt['id']?>"><i class="glyphicon glyphicon-trash"></i></a>
+                            <a class="btn btn-xs btn-success editClient" href="/admin/filter/edit/<?=$filt['id']?>"><i class="glyphicon glyphicon-pencil"></i></a>
+                            <a class="btn btn-xs btn-danger deleteClient" href="/admin/filter/delete/<?=$filt['id']?>"><i class="glyphicon glyphicon-trash"></i></a>
                         </div>
                     </td>
                 </tr>
