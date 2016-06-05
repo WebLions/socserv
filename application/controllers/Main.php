@@ -10,8 +10,6 @@ class Main extends CI_Controller {
 		$this->load->model('service_model');
 		$this->load->model('main_model');
 		$this->data['categories'] = $this->categories_model->getCategories();
-//		$this->data['categories'] = $this->categories_model->getCategories(array('no_district' => true));
-//		echo '<pre>';
 		foreach ($this->data['categories'] as $key=>$value) {
 			$params['category_ids'] = $value['id'];
 			$this->data['categories'][$key]['values'] = $this->filters_model->getFilters($params);
