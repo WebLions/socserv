@@ -38,16 +38,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <a href="/admin">Служби</a>
                 </li>
                 <li>
-                    <a href="admin/filters">Фільтри</a>
+                    <a href="/admin/filter">Фільтри</a>
                 </li>
                 <li>
                     <a href="/admin/category">Категорії фільтрів</a>
                 </li>
                 <li>
-                    <a href="admin/settings">Налаштування</span></a>
+                    <a href="/admin/settings">Налаштування</span></a>
                 </li>
                 <li>
-                    <a href="admin/logout">Вихід</span></a>
+                    <a href="/admin/logout">Вихід</span></a>
                 </li>
             </ul>
         </div>

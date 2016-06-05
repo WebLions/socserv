@@ -11,7 +11,7 @@ class Filters extends CI_Controller {
         $categories = $this->filters_model->getFilters();
         $this->data['filters'] = $categories;
         $this->load->view('admin/header');
-        $this->load->view('admin/filters', $this->data);
+        $this->load->view('admin/filters/filters', $this->data);
         $this->load->view('admin/footer');
     }
     /**
@@ -22,7 +22,7 @@ class Filters extends CI_Controller {
         $categories = $this->categories_model->getCategories();
         $this->data['categories'] = $categories;
         $this->load->view('admin/header');
-        $this->load->view('admin/category', $this->data);
+        $this->load->view('admin/filters/filter-add', $this->data);
         $this->load->view('admin/footer');
     }
 
@@ -42,7 +42,7 @@ class Filters extends CI_Controller {
         $filter = $this->filters_model->getFilters(array('ids' => $id));
         $this->data['filter'] = $filter;
         $this->load->view('admin/header');
-        $this->load->view('admin/filters', $this->data);
+        $this->load->view('admin/filters/filter-edit', $this->data);
         $this->load->view('admin/footer');
     }
 
