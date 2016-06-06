@@ -29,11 +29,10 @@
     var filterhtml = '';
     markers = {};
     $(window).resize(function(){
-        var height = document.documentElement.clientHeight - 151;
+        var height = document.body.clientHeight - 151;
         console.log(height);
         $('#map').css('min-height',height+'px');
         $('#map').css('height',height+'px');
-        initMap();
     })
     $(document).ready(function(){
         var height = document.documentElement.clientHeight - 151;
@@ -87,7 +86,10 @@
             if(any==false)
                 $('#selected_filters').html('');
             /* Все, опасносности больше нет, можно дальше исправлять :) */
-
+            var height = document.body.clientHeight - 81;
+            console.log(height);
+            $('#map').css('min-height',height+'px');
+            $('#map').css('height',height+'px');
         });
 
         $('#clear_filter').click(function(){
