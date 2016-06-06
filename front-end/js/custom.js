@@ -15,6 +15,10 @@ $(document).ready(function(){
                 });
             if(!open)
             $(this).parent().toggleClass('open');
+            var height = document.body.clientHeight - 81;
+            console.log(height);
+            $('#map').css('min-height',height+'px');
+            $('#map').css('height',height+'px');
         })
     })
 })
