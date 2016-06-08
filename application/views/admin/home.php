@@ -27,7 +27,7 @@
                 <td style="vertical-align: middle">
                     <div class="btn-group">
                         <a class="btn btn-xs btn-success editClient" href="/admin/service/edit/<?=$serv['id']?>"><i class="glyphicon glyphicon-pencil"></i></a>
-                        <a class="btn btn-xs btn-danger deleteClient" href="/admin/service/delete/<?=$serv['id']?>"><i class="glyphicon glyphicon-trash"></i></a>
+                        <a class="btn btn-xs btn-danger" onclick="return confirm('Удалить социальную службу?')" href="/admin/service/delete/<?=$serv['id']?>"><i class="glyphicon glyphicon-trash"></i></a>
                     </div>
                 </td>
             </tr>
