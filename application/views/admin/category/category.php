@@ -26,6 +26,7 @@
             <?php } ?>
         </table>
     </div>
+   <div style="text-align: center;width:100%;">
     <nav>
         <ul class="pagination">
             <?php for ($i = 1; $i <= $page_count; $i++) {?>
@@ -33,4 +34,5 @@
             <?php } ?>
         </ul>
     </nav>
+   </div>
 </div>
